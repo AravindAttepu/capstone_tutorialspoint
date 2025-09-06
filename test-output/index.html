@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\aravi\AppData\Local\Temp\testng-eclipse--1815836944\testng-customsuite.xml</span>
+                    <span>C:\Users\aravi\AppData\Local\Temp\testng-eclipse--1664325935\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -103,10 +103,24 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="Testcases.Product" class="method navigator-link" hash-for-method="searchproductandview">searchproductandview</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="Testcases.Product" class="method navigator-link" hash-for-method="Browseviacategoryandfilter">Browseviacategoryandfilter</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Testcases.Product" class="method navigator-link" hash-for-method="searchproductandview">searchproductandview</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -126,13 +140,14 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="searchproductandview">
-                  </a> <!-- searchproductandview -->
-                  <span class="method-name">searchproductandview</span>
-                  <div class="stack-trace">java.lang.AssertionError: Index 0 out of bounds for length 0
+                  <a name="Browseviacategoryandfilter">
+                  </a> <!-- Browseviacategoryandfilter -->
+                  <span class="method-name">Browseviacategoryandfilter</span>
+                  <div class="stack-trace">java.lang.AssertionError: Category search failed expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
-	at Base.BaseTest.logFailure(BaseTest.java:55)
-	at Testcases.Product.searchproductandview(Product.java:26)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at Testcases.Product.Browseviacategoryandfilter(Product.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -167,10 +182,25 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">Testcases.Product</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="searchproductandview">
+                  </a> <!-- searchproductandview -->
+                  <span class="method-name">searchproductandview</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\aravi\AppData\Local\Temp\testng-eclipse--1815836944\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\aravi\AppData\Local\Temp\testng-eclipse--1664325935\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -219,16 +249,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'searchproductandview')
 data.setCell(0, 2, 'Testcases.Product')
-data.setCell(0, 3, 11444);
+data.setCell(0, 3, 12227);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'Browseviacategoryandfilter')
+data.setCell(1, 2, 'Testcases.Product')
+data.setCell(1, 3, 10082);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 11 seconds</span>
+              <span class="suite-total-time">Total running time: 22 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -261,21 +295,33 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">455 ms</span>
+                <span class="method-start">499 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">searchproductandview</span>
+                <span class="method-start">6666 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">18897 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">19152 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">searchproductandview</span>
-                <span class="method-start">2703 ms</span>
+                <span class="method-name">Browseviacategoryandfilter</span>
+                <span class="method-start">20007 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">14154 ms</span>
+                <span class="method-start">30093 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">closeReport</span>
-                <span class="method-start">14539 ms</span>
+                <span class="method-start">30336 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

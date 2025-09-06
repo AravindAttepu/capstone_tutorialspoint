@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Sep 05 22:38:02 IST 2025</td>
+<td>Started on:</td><td>Sat Sep 06 12:29:21 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>15 seconds (15099 ms)</td>
+<tr><td>Total time:</td><td>30 seconds (30915 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,11 +76,12 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Testcases.Product.searchproductandview()'><b>searchproductandview</b><br>Test class: Testcases.Product</td>
-<td><div><pre>java.lang.AssertionError: Index 0 out of bounds for length 0
+<td title='Testcases.Product.Browseviacategoryandfilter()'><b>Browseviacategoryandfilter</b><br>Test class: Testcases.Product</td>
+<td><div><pre>java.lang.AssertionError: Category search failed expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
-	at Base.BaseTest.logFailure(BaseTest.java:55)
-	at Testcases.Product.searchproductandview(Product.java:26)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at Testcases.Product.Browseviacategoryandfilter(Product.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -109,11 +110,12 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace278753868", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace278753868'><pre>java.lang.AssertionError: Index 0 out of bounds for length 0
+</pre></div><a href='#' onClick='toggleBox("stack-trace795275472", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace795275472'><pre>java.lang.AssertionError: Category search failed expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
-	at Base.BaseTest.logFailure(BaseTest.java:55)
-	at Testcases.Product.searchproductandview(Product.java:26)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at Testcases.Product.Browseviacategoryandfilter(Product.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -143,8 +145,22 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>11</td>
-<td>Testcases.Product@3857f613</td></tr>
+<td>10</td>
+<td>Testcases.Product@198b6731</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Testcases.Product.searchproductandview()'><b>searchproductandview</b><br>Test class: Testcases.Product</td>
+<td></td>
+<td>12</td>
+<td>Testcases.Product@198b6731</td></tr>
 </table><p>
 </body>
 </html>

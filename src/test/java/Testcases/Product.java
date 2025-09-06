@@ -1,5 +1,7 @@
 package Testcases;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.IOException;
 
 import org.testng.annotations.Test;
@@ -11,7 +13,8 @@ import Utilities.ReportManager;
 import Utilities.WaitUtil;
 
 public class Product extends BaseTest {
-  @Test
+	
+  @Test(priority = '1')
   public void searchproductandview() throws IOException {
 	  try {
 	 test = ReportManager.createTest("TutorialPoint", "Search and view product");
@@ -27,5 +30,20 @@ public class Product extends BaseTest {
 			
 		}
 	 
+  }
+  
+  @Test(priority = '2')
+  public void Browseviacategoryandfilter() throws IOException
+  {
+	  try {
+		  test = ReportManager.createTest("TutorialPoint", "Browse via category");
+		  HomePage homePage= new HomePage(driver);
+		 assertTrue( homePage.browseviacategory("Laptops & Notebooks", "Windows (0)"),"Category search failed");
+		  
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		logFailure(e, "Browseviacategoryandfilter");
+	}
   }
 }
