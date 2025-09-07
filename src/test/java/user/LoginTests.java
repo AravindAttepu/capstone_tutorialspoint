@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
     		test.info("test started");
 			HomePage page= new HomePage(driver);
 			test.info("homepage object loaded");
-			page.clickonlogin();
+			page.clickOnLogin();
 			test.info("login  page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 			test.info("data loaded");
@@ -48,7 +48,7 @@ public class LoginTests extends BaseTest {
     		test.info("test started");
 			HomePage page= new HomePage(driver);
 			test.info("homepage object loaded");
-			page.clickonlogin();
+			page.clickOnLogin();
 			test.info("login page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 			test.info("data loaded");

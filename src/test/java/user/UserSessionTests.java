@@ -20,10 +20,10 @@ public class UserSessionTests extends BaseTest {
     		test.info("test started");
     		HomePage homePage = new HomePage(driver);
     		test.info("home page object created");
-        	if(!homePage.checkedloginin())
+        	if(!homePage.isLoggedIn())
         	{
         		test.info("user logged in");
-        		homePage.makelogout();
+        		homePage.logout();
         		test.info("user kogged out");
         	}
         	else {

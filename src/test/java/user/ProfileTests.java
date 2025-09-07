@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.*;
@@ -24,9 +25,9 @@ public class ProfileTests extends BaseTest {
     	try {
 		test= ReportManager.createTest("Edit profile", "Editing profile details");
     	HomePage homePage = new HomePage(driver);
-    	if(!homePage.checkedloginin())
+    	if(!homePage.isLoggedIn())
     	{
-    		homePage.clickonlogin();
+    		homePage.clickOnLogin();
     		test.info("login  page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 			test.info("data loaded");
@@ -34,7 +35,7 @@ public class ProfileTests extends BaseTest {
 			test.info("loginpage object loaded");
 			assertTrue(loginPage.Accountlogin(data),"Login Failed");
     	}
-    	homePage.clickonMyAccount();
+    	homePage.clickOnMyAccount();
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangeaccountdetails();
     	
@@ -54,9 +55,9 @@ public class ProfileTests extends BaseTest {
 			
     	test= ReportManager.createTest("Edit password", "changing password after login");
     	HomePage homePage = new HomePage(driver);
-    	if(!homePage.checkedloginin())
+    	if(!homePage.isLoggedIn())
     	{
-    		homePage.clickonlogin();
+    		homePage.clickOnLogin();
     		test.info("login  page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 			test.info("data loaded");
@@ -64,7 +65,7 @@ public class ProfileTests extends BaseTest {
 			test.info("loginpage object loaded");
 			assertTrue(loginPage.Accountlogin(data),"Login Failed");
     	}
-    	homePage.clickonlogin();
+    	homePage.clickOnLogin();
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangepassword();
     	
@@ -83,13 +84,15 @@ public class ProfileTests extends BaseTest {
 			
     	test= ReportManager.createTest("forgot password", "changing password before login");
     	HomePage homePage = new HomePage(driver);
-    	if(homePage.checkedloginin())
+    	if(homePage.isLoggedIn())
     	{
-    		homePage.makelogout();
+    		homePage.logout();
     	}
-    	homePage.clickonlogin();
+    	homePage.clickOnLogin();
     	LoginPage loginPage= new LoginPage(driver);
-    	assertTrue(loginPage.forgotpassword()," operation forgot password failed");
+    	Map<String, String> userMap=  new HashMap<>();
+    	userMap.put("email", "fhfg@gdfg.com");
+    	assertTrue(loginPage.forgottenPassword(userMap)," operation forgot password failed");
     	
     	//after check Success: Your account has been successfully updated.
     	

@@ -24,7 +24,7 @@ public class MiscTests extends BaseTest {
     		test.info("test started");
     		HomePage page= new HomePage(driver);
     		test.info("Home Page object loaded");
-    	 assertTrue(page.changecurrency("EUR"));
+    	 assertTrue(page.changeCurrency("EUR"));
     	 test.pass("currency chaged");
 
 		} catch (Exception e) {
@@ -39,7 +39,7 @@ public class MiscTests extends BaseTest {
     	test.info("test started");
     	HomePage page=new HomePage(driver);
     	test.info("home page object loaded");
-    	page.redirecttpcontacus();
+    	page.redirectToContactUs();
     	test.info("redirected to contactus");
     	ContactUsPage contactUsPage = new ContactUsPage(driver);
     	test.info("contactuspage object loaded");
