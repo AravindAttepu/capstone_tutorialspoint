@@ -45,6 +45,14 @@ public class ProductsPage {
         }
     }
 
+    public boolean areProductsDisplayed() {
+        return !products.isEmpty();
+    }
+
+    public String getNoResultsMessage() {
+        return wait.until(ExpectedConditions.visibilityOf(noProductMessage)).getText();
+    }
+
     public boolean isNoProductMessageDisplayed() {
         return wait.until(ExpectedConditions.visibilityOf(noProductMessage)).isDisplayed();
     }

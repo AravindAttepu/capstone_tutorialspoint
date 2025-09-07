@@ -1,10 +1,9 @@
 package search;
 
-
 import Base.BaseTest;
 import Pages.HomePage;
+import Pages.ProductsPage;
 import Utilities.ReportManager;
-import Utilities.WaitUtil;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -19,7 +18,9 @@ public class SearchTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Valid product search");
             HomePage homePage = new HomePage(driver);
-            assertTrue(homePage.searchProduct("iphone"), "Valid search failed");
+            homePage.searchProduct("iphone");
+            ProductsPage productsPage = new ProductsPage(driver);
+            assertTrue(productsPage.areProductsDisplayed(), "Valid search failed");
         } catch (Exception e) {
             logFailure(e, "testValidProductSearch");
         }
@@ -30,7 +31,9 @@ public class SearchTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Invalid product search");
             HomePage homePage = new HomePage(driver);
-            assertTrue(homePage.searchProduct("invalidproduct"), "Invalid search failed");
+            homePage.searchProduct("invalidproduct");
+            ProductsPage productsPage = new ProductsPage(driver);
+            assertTrue(productsPage.getNoResultsMessage().contains("There is no product that matches the search criteria."), "Invalid search failed");
         } catch (Exception e) {
             logFailure(e, "testInvalidProductSearch");
         }
@@ -41,7 +44,9 @@ public class SearchTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Blank product search");
             HomePage homePage = new HomePage(driver);
-            assertTrue(homePage.searchProduct(""), "Blank search failed");
+            homePage.searchProduct("");
+            ProductsPage productsPage = new ProductsPage(driver);
+            assertTrue(productsPage.getNoResultsMessage().contains("There is no product that matches the search criteria."), "Blank search failed");
         } catch (Exception e) {
             logFailure(e, "testBlankProductSearch");
         }
@@ -52,7 +57,9 @@ public class SearchTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Special character search");
             HomePage homePage = new HomePage(driver);
-            assertTrue(homePage.searchProduct("@#$%"), "Special character search failed");
+            homePage.searchProduct("@#$%");
+            ProductsPage productsPage = new ProductsPage(driver);
+            assertTrue(productsPage.getNoResultsMessage().contains("There is no product that matches the search criteria."), "Special character search failed");
         } catch (Exception e) {
             logFailure(e, "testSpecialCharSearch");
         }
