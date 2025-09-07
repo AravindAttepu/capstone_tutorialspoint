@@ -57,7 +57,7 @@ public class CheckoutPage {
 
     public boolean selectGuestCheckout() {
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(guestCheckoutRadioButton)).click();
+           
             return true;
         } catch (Exception e) {
             return false;

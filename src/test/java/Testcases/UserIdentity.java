@@ -23,7 +23,7 @@ public class UserIdentity extends BaseTest {
 	  try {
 		  test = ReportManager.createTest("TutorialPoint", "Register and Login");
 		
-		Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+		Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 	RegisterPage accountPage= new RegisterPage(driver);
 	assertTrue(accountPage.reigisteruser(data),"Registration Failed");
 	LoginPage loginPage= new LoginPage(driver);
@@ -41,7 +41,7 @@ public class UserIdentity extends BaseTest {
   public void Login() throws IOException
   {
 	  test = ReportManager.createTest("TutorialPoint", "Register and Login");
-		Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+		Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 		LoginPage loginPage= new LoginPage(driver);
 		assertTrue(loginPage.Accountlogin(data),"Registration Failed");
   }

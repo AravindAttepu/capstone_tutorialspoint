@@ -34,7 +34,7 @@ public class MiscTests extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void testContactUsFormSubmission() {
+    public void testContactUsFormSubmission() throws IOException {
         try {
     	    test= ReportManager.createTest("Redirect to contact us", "jump to contact us page ");
     	    test.info("test started");
