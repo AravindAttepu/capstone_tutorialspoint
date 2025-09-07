@@ -5,43 +5,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
+import java.time.Duration;
 
 public class ProductsPage {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
-    @FindBy(xpath = "//div[@class='caption']/h4/a")
-    private List<WebElement> productList;
+    @FindBy(xpath = "//div[contains(@class, 'product-layout')]")
+    private WebElement product;
 
-    @FindBy(xpath = "//p[contains(text(),'There is no product that matches the search criteria.')]")
+    @FindBy(xpath = "//div[@id='content']/p[contains(text(), 'There is no product that matches the search criteria.')]")
     private WebElement noProductMessage;
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
     public boolean isProductDisplayed(String productName) {
-        for (WebElement product : productList) {
-            if (product.getText().equalsIgnoreCase(productName)) {
-                return true;
-            }
-        }
-        return false;
+        By productLocator = By.linkText(productName);
+        return wait.until(ExpectedConditions.presenceOfElementLocated(productLocator)).isDisplayed();
     }
 
     public void viewProduct(String productName) {
-        for (WebElement product : productList) {
-            if (product.getText().equalsIgnoreCase(productName)) {
-                product.click();
-                return;
-            }
-        }
+        By productLocator = By.linkText(productName);
+        wait.until(ExpectedConditions.elementToBeClickable(productLocator)).click();
     }
 
     public boolean isNoProductMessageDisplayed() {
-        return noProductMessage.isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(noProductMessage)).isDisplayed();
     }
 }

@@ -18,6 +18,9 @@ public class HomePage {
     ConfigReader configReader;
     WebDriverWait wait;
 
+    @FindBy(id = "logo")
+    private WebElement logo;
+
     @FindBy(xpath = "//a[@title='My Account']")
     private WebElement myAccount;
 
@@ -47,6 +50,9 @@ public class HomePage {
 
     @FindBy(linkText = "Login")
     private WebElement loginLink;
+
+    @FindBy(id = "menu")
+    private WebElement mainMenu;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -105,5 +111,17 @@ public class HomePage {
     public void logout() {
         myAccount.click();
         logoutLink.click();
+    }
+
+    public boolean isLogoDisplayed() {
+        return logo.isDisplayed();
+    }
+
+    public boolean isSearchBarDisplayed() {
+        return searchBar.isDisplayed();
+    }
+
+    public boolean isMainMenuDisplayed() {
+        return mainMenu.isDisplayed();
     }
 }

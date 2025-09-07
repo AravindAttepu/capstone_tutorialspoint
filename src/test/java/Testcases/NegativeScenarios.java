@@ -36,7 +36,7 @@ public class NegativeScenarios extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Search with blank input");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("");
+            homePage.searchProduct("");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
             assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed");
@@ -50,7 +50,7 @@ public class NegativeScenarios extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Search with special characters");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("@@@###");
+            homePage.searchProduct("@@@###");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
             assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed");

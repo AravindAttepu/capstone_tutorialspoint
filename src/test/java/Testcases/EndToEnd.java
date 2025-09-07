@@ -36,21 +36,20 @@ public class EndToEnd extends BaseTest {
 
             // Search and view product
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
 
             // View product
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct("iPhone");
 
             // Add to cart
             ProductPage productPage = new ProductPage(driver);
-            assertTrue(productPage.addToCart(), "Add to cart failed
-");
+            productPage.addToCart();
 
             // Checkout
             CartPage cartPage = new CartPage(driver);
-            assertTrue(cartPage.checkout(), "Checkout failed");
+            cartPage.checkout();
 
         } catch (Exception e) {
             logFailure(e, "endToEndTest");

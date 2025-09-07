@@ -55,13 +55,13 @@ public class RegisterPage {
      * @param data A map containing user registration data (firstname, lastname, email, phone, password).
      * @return True if registration is successful, false otherwise.
      */
-    public boolean registerUser(Map<String, String> data) {
+    public boolean reigisteruser(Map<String, String> data) {
         try {
             driver.get(configReader.getProperty("url") + "index.php?route=account/register");
             firstname.sendKeys(data.get("firstname"));
             lastname.sendKeys(data.get("lastname"));
-            email.sendKeys(data.get("mail"));
-            telephone.sendKeys(data.get("phone"));
+            email.sendKeys(data.get("email"));
+            telephone.sendKeys(data.get("telephone"));
             password.sendKeys(data.get("password"));
             confirmPassword.sendKeys(data.get("password"));
             subscribeYes.click();

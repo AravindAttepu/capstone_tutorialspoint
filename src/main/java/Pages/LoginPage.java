@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Map;
+
 public class LoginPage {
 
     WebDriver driver;
@@ -25,6 +27,9 @@ public class LoginPage {
     @FindBy(xpath = "//a[text() = 'Forgotten Password']")
     private WebElement forgotPasswordBtn;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+    private WebElement dangerAlert;
+
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     private WebElement successAlert;
 
@@ -36,27 +41,39 @@ public class LoginPage {
 
     /**
      * Logs in to the account.
-     * @param username The email address of the user.
-     * @param password The password of the user.
+     * @param data The user data map.
      * @return True if login is successful, false otherwise.
      */
-    public boolean accountLogin(String username, String password) {
+    public boolean Accountlogin(Map<String, String> data) {
         driver.get(configReader.getProperty("url") + "index.php?route=account/login");
-        this.email.sendKeys(username);
-        this.password.sendKeys(password);
+        this.email.sendKeys(data.get("email"));
+        this.password.sendKeys(data.get("password"));
         loginBtn.click();
         return true; // Assuming login is always successful for this example
     }
 
     /**
+     * Attempts to login with invalid credentials.
+     * @param data The user data map.
+     * @return True if the expected error message is displayed, false otherwise.
+     */
+    public boolean invalidLogin(Map<String, String> data) {
+        driver.get(configReader.getProperty("url") + "index.php?route=account/login");
+        this.email.sendKeys(data.get("Email"));
+        this.password.sendKeys(data.get("Password"));
+        loginBtn.click();
+        return dangerAlert.getText().contains("Warning: No match for E-Mail Address and/or Password.");
+    }
+
+    /**
      * Initiates the forgotten password process.
-     * @param email The email address to send the reset link to.
+     * @param data The user data map.
      * @return True if the password reset email is sent successfully, false otherwise.
      */
-    public boolean forgotPassword(String email) {
+    public boolean forgottenPassword(Map<String, String> data) {
         driver.get(configReader.getProperty("url") + "index.php?route=account/forgotten");
         forgotPasswordBtn.click();
-        this.email.sendKeys(email);
+        this.email.sendKeys(data.get("email"));
         loginBtn.click();
         return successAlert.getText().contains("An email with a confirmation link has been sent your email address.");
     }

@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CartPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
-    @FindBy(xpath = "//a[text()='Checkout']")
+    @FindBy(linkText = "Checkout")
     private WebElement checkoutButton;
 
     public CartPage(WebDriver driver) {
@@ -17,9 +17,7 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean checkout() {
+    public void checkout() {
         checkoutButton.click();
-        // Add verification logic here
-        return true;
     }
 }
