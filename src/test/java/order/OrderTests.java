@@ -10,9 +10,6 @@ public class OrderTests {
     public void setup() {}
 
     @Test
-    public void testOrderConfirmationPage() {}
-
-    @Test
     public void testSaveOrderToHistory() {}
 
     @AfterClass
