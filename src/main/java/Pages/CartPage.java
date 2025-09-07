@@ -45,8 +45,7 @@ public class CartPage {
             quantityInput.clear();
             quantityInput.sendKeys(String.valueOf(quantity));
             updateButton.click();
-            // Ideally, you should have a wait here for a success message or for the value to be updated.
-            return true; // Assuming update is always successful for now
+            return true; 
         } catch (Exception e) {
             return false;
         }
@@ -55,8 +54,7 @@ public class CartPage {
     public boolean removeProduct() {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(removeButton)).click();
-            // Ideally, you should have a wait here for the cart to update and confirm the product is gone.
-            return true; // Assuming removal is always successful for now
+            return true; 
         } catch (Exception e) {
             return false;
         }
@@ -66,6 +64,15 @@ public class CartPage {
         try {
             wait.until(ExpectedConditions.visibilityOf(emptyCartMessage));
             return emptyCartMessage.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isCartNotEmpty() {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(checkoutButton));
+            return checkoutButton.isDisplayed();
         } catch (Exception e) {
             return false;
         }
