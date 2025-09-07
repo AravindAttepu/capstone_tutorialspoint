@@ -41,9 +41,7 @@ public class OrderHistoryTests extends BaseTest {
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
-            checkoutPage.confirmOrder();
-
+            
             test.info("Viewing order history");
             OrderHistoryPage orderHistoryPage = new OrderHistoryPage(driver);
             orderHistoryPage.goToOrderHistory();

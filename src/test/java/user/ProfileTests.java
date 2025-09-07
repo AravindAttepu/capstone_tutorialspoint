@@ -30,13 +30,14 @@ public class ProfileTests extends BaseTest {
     	{
     		homePage.clickOnLogin();
     		test.info("login  page opened");
-			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 			test.info("data loaded");
 			LoginPage loginPage= new LoginPage(driver);
 			test.info("loginpage object loaded");
 			assertTrue(loginPage.Accountlogin(data),"Login Failed");
     	}
     	homePage.clickOnMyAccount();
+    	test.info("Clicked on MYAccount");
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangeaccountdetails();
         test.pass("Profile details edited successfully");

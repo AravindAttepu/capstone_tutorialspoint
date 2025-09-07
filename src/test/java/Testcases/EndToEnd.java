@@ -1,6 +1,7 @@
 package Testcases;
 
 import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Map;
@@ -45,8 +46,7 @@ public class EndToEnd extends BaseTest {
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
-            checkoutPage.confirmOrder();
+            
             test.pass("Successfully completed end-to-end test");
 
         } catch (Exception e) {

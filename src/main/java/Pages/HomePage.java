@@ -1,6 +1,8 @@
 package Pages;
 
 import Utilities.ConfigReader;
+import Utilities.WaitUtil;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +23,7 @@ public class HomePage {
     @FindBy(id = "logo")
     private WebElement logo;
 
-    @FindBy(xpath = "//a[@title='My Account']")
+    @FindBy(xpath = "//a[@title='My Account']/span")
     private WebElement myAccount;
 
     @FindBy(name = "search")
@@ -79,14 +81,17 @@ public class HomePage {
         }
     }
 
-    public void clickOnRegister() {
-        myAccount.click();
-        registerLink.click();
+    public void clickOnRegister() throws InterruptedException {
+    	 wait.until(ExpectedConditions.elementToBeClickable(myAccount)).click();  // open dropdown
+    	 Thread.sleep(1000);
+    	    wait.until(ExpectedConditions.elementToBeClickable(registerLink)).click();
+      
     }
 
-    public void clickOnLogin() {
-        myAccount.click();
-        loginLink.click();
+    public void clickOnLogin() throws InterruptedException {
+    	wait.until(ExpectedConditions.elementToBeClickable(myAccount)).click();  // open dropdown
+    	Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(loginLink)).click();
     }
 
     public boolean changeCurrency(String currency) {
@@ -100,18 +105,23 @@ public class HomePage {
         contactUsButton.click();
     }
 
-    public boolean isLoggedIn() {
-        myAccount.click();
+    public boolean isLoggedIn() throws InterruptedException {
+    	myAccount.click();
+    	Thread.sleep(1000);
         return !loginLink.isDisplayed();
     }
 
-    public void clickOnMyAccount() {
-        myAccountLink.click();
+    public void clickOnMyAccount() throws InterruptedException {
+    	  wait.until(ExpectedConditions.elementToBeClickable(myAccount)).click();  // click top-level
+    	  Thread.sleep(1000);
+    	    wait.until(ExpectedConditions.elementToBeClickable(myAccountLink)).click(); // click dropdown item
     }
 
-    public void logout() {
-        myAccount.click();
-        logoutLink.click();
+    public void logout() throws InterruptedException {
+    	
+    	wait.until(ExpectedConditions.elementToBeClickable(myAccount)).click();  // open dropdown
+    	Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(logoutLink)).click();
     }
 
     public boolean isLogoDisplayed() {

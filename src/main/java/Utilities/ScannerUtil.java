@@ -16,7 +16,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ScannerUtil {
 
-    /**
+  
+
+	/**
      * Reads an Excel file and returns a Map where the first column is the key
      * and the second column is the value.
      *

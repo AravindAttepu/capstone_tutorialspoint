@@ -22,6 +22,12 @@ public class ProductPage {
 
     @FindBy(css = "div.alert-success")
     private WebElement successAlert;
+    
+    @FindBy(xpath = "//button[@data-original-title=\"Compare this Product\"]")
+    private WebElement comparebutton;
+    
+    @FindBy(linkText = "product comparison")
+    private WebElement showcompare;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -30,17 +36,28 @@ public class ProductPage {
     }
 
     public boolean addToCart() {
-        addToCartButton.click();
+    	wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
         return true;
     }
     public boolean addToCart(String i) {
     	productquantity.clear();
     	productquantity.sendKeys(i);
-        addToCartButton.click();
+    	wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+       
         return true;
     }
 
     public String getAddToCartSuccessMessage() {
         return wait.until(ExpectedConditions.visibilityOf(successAlert)).getText();
     }
+    public void addtocompare()
+    {
+    	comparebutton.click();
+    }
+
+	public void showcomparision() {
+		showcompare.click();
+		// TODO Auto-generated method stub
+		
+	}
 }

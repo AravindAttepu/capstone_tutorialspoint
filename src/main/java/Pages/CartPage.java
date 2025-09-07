@@ -7,7 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utilities.ScannerUtil;
+
+import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartPage {
 
@@ -35,8 +40,12 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void checkout() {
-        checkoutButton.click();
+    public void checkout() throws IOException {
+    	CheckoutPage checkoutPage=  new CheckoutPage(driver);
+    	Map<String, String> dataMap= new HashMap<>();
+    	dataMap= ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
+    	checkoutPage.enterBillingDetails(dataMap);
+        
     }
 
     public boolean updateQuantity(int quantity) {

@@ -12,7 +12,7 @@ public class ContactUsPage {
 	WebDriver driver= null;
 	By name=By.xpath("//input[@id=\"input-name\"]");
 	By mail= By.xpath("//input[@id=\"input-email\"]");
-	By summary= By.xpath("//input[@id=\"input-enquiry\"]");
+	By summary= By.xpath("//textarea[@id=\"input-enquiry\"]");
 	By submitbtn= By.xpath("//input[@type=\"submit\"]");
 	
 	
@@ -28,7 +28,7 @@ public class ContactUsPage {
 		driver.findElement(summary).sendKeys("qwertyuioppdhffyheu");
 		driver.findElement(submitbtn).click();
 		WaitUtil.waitForPageLoad(driver, 10);
-		driver.findElement(By.xpath("//input[@type=\\\"Continue\\\"]"));
+		driver.findElement(By.xpath("//a[text()=\"Continue\"]"));
 		return true;
 	}
 }

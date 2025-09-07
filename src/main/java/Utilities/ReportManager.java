@@ -16,13 +16,16 @@ public class ReportManager {
         if (extent == null) {
             String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
             String repName = "Test-Report-" + timeStamp + ".html";
-            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/" + repName);
+            
+            ExtentSparkReporter reporter = new ExtentSparkReporter("reports/ExtentReport.html");
+            
             reporter.config().setReportName("Selenium Automation Report");
             reporter.config().setDocumentTitle("Automation Execution Report");
 
             extent = new ExtentReports();
             extent.attachReporter(reporter);
             extent.setSystemInfo("Tester", "Aravind Attepu");
+            extent.setSystemInfo("Framework", "JUnit4 + Selenium");
         }
         return extent;
     }

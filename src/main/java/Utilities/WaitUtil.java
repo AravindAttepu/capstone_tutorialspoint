@@ -15,6 +15,7 @@ public class WaitUtil {
      * @param driver   WebDriver instance
      * @param timeout  timeout in seconds
      */
+	
     public static void waitForPageLoad(WebDriver driver, int timeout) {
         new WebDriverWait(driver, Duration.ofSeconds(timeout))
                 .until((ExpectedCondition<Boolean>) wd ->

@@ -60,7 +60,9 @@ public class RegisterPage {
             driver.get(configReader.getProperty("url") + "index.php?route=account/register");
             firstname.sendKeys(data.get("firstname"));
             lastname.sendKeys(data.get("lastname"));
-            email.sendKeys(data.get("email"));
+            String mail = "test" + System.currentTimeMillis() + "@example.com";
+            email.sendKeys(mail);
+            data.put("mail", mail);
             telephone.sendKeys(data.get("telephone"));
             password.sendKeys(data.get("password"));
             confirmPassword.sendKeys(data.get("password"));

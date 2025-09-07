@@ -17,7 +17,7 @@ public class ScreenshotUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        return "screenshots/" + screenshotName + ".png";
     }
 
     public static void attachScreenshot(WebDriver driver, String name, com.aventstack.extentreports.ExtentTest test) throws IOException {
