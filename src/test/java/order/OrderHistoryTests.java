@@ -30,10 +30,10 @@ public class OrderHistoryTests extends BaseTest {
 
             // Place an order
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);

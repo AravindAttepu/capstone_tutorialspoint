@@ -16,6 +16,9 @@ public class ProductPage {
 
     @FindBy(id = "button-cart")
     private WebElement addToCartButton;
+    
+    @FindBy(id = "input-quantity")
+    private WebElement productquantity;
 
     @FindBy(css = "div.alert-success")
     private WebElement successAlert;
@@ -27,6 +30,11 @@ public class ProductPage {
     }
 
     public void addToCart() {
+        addToCartButton.click();
+    }
+    public void addToCart(String quantity) {
+    	productquantity.clear();
+    	productquantity.sendKeys(quantity);
         addToCartButton.click();
     }
 

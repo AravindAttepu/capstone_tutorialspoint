@@ -35,10 +35,10 @@ public class AddToCartTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Add specific quantity to cart");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             assertTrue(productPage.addToCart(3), "Add to cart with specific quantity failed");
         } catch (Exception e) {
