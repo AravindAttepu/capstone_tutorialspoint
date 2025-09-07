@@ -1,0 +1,196 @@
+/*
+ * @author Aravind Attepu
+ * 
+ * =============================================================================
+ * Main containers
+ * =============================================================================
+ */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.reporter-احنا-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/*
+ * =============================================================================
+ * Top panel
+ * =============================================================================
+ */
+
+.top-panel {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-panel-left {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.top-panel-right {
+  font-size: 14px;
+}
+
+/*
+ * =============================================================================
+ * Suites summary
+ * =============================================================================
+ */
+
+.suites-summary {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.suite-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.suite-summary-row:last-child {
+  border-bottom: none;
+}
+
+.suite-name {
+  font-weight: bold;
+}
+
+.suite-stats {
+  font-size: 14px;
+  color: #666;
+}
+
+/*
+ * =============================================================================
+ * Main content table
+ * =============================================================================
+ */
+
+.main-content-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main-content-table th,
+.main-content-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.main-content-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.main-content-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/*
+ * =============================================================================
+ * Test results
+ * =============================================================================
+ */
+
+.test-name {
+  font-weight: bold;
+}
+
+.test-status {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.test-status-passed {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.test-status-failed {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.test-status-skipped {
+  background-color: #FFC107;
+  color: #fff;
+}
+
+/*
+ * =============================================================================
+ * Reporter output
+ * =============================================================================
+ */
+
+.reporter-output {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.reporter-output-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/*
+ * =============================================================================
+ * Chronological view
+ * =============================================================================
+ */
+
+.chronological-view {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.chronological-view-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.chronological-view-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.chronological-view-table th,
+.chronological-view-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.chronological-view-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}

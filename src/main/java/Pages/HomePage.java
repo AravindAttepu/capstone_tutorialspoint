@@ -1,110 +1,109 @@
 package Pages;
 
-import java.util.List;
-
+import Utilities.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class HomePage {
 
-	WebDriver driver= null;
-	
-	By Account= By.xpath("//a[@title='My Account']");
-	By searchbar= By.xpath("//input[@name=\"search\"]");
-	By searchbtn= By.xpath("//button[@type=\"button\"]/i");
-	By categoriespath= By.xpath("//ul[@class=\"nav navbar-nav\"]/li");
-	By Currencybtn= By.xpath("//button[@class=\"btn btn-link dropdown-toggle\"]");
-	By contactusbtn= By.xpath("//a[text()=\"Contact Us\"]");
-	By MyAccount= By.xpath("//ul[@class=\"list-unstyled\"]/li/  a[text()=\"My Account\"]");
-	By Logout= By.xpath("//ul[@class=\"list-unstyled\"]/li/  a[text()=\"Logout\"]");
-	
-	public HomePage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		this.driver = driver;
-		
-	}
-	public boolean searchproduct(String product)
-	{
-		driver.get("https://tutorialsninja.com/demo/index.php");
-		driver.findElement(searchbar).clear();
-		driver.findElement(searchbar).sendKeys(product);
-		driver.findElement(searchbtn).click();
-		return true;
-		
-	}
-	public boolean browseviacategory(String category, String Subcategory)
-	{
-		String currenturl= driver.getCurrentUrl();
-		List<WebElement> categories= driver.findElements(categoriespath);
-		for (WebElement webElement : categories) {
-			System.out.println(webElement.getText());
-			if(webElement.getText().equals(category)) {
-				webElement.click();
-				if(currenturl.equals(driver.getCurrentUrl()))
-				{
-				List<WebElement> subcatElements = webElement.findElements(By.xpath("//div/div/ul/li/a"));
-				for (WebElement webElement2 : subcatElements) {
-					System.out.println(webElement2.getText());
-					if(webElement2.getText().equals(Subcategory))
-					{
-						webElement2.click();
-						return true;
-					}
-				}
-				return false;
-				}
-				else {
-					
-					return true;
-					
-				}
-			}
-		}
-		return false;
-		
-	}
-	public void clickonregister()
-	{
-		driver.findElement(Account).click();
-		driver.findElement(By.xpath("//a[text()=\"Register\"]")).click();
-		
-	}
-	
-	public void clickonlogin()
-	{
-		driver.findElement(Account).click();
-		driver.findElement(By.xpath("//a[text()=\"Login\"]")).click();
-		
-	}
-	public boolean changecurrency(String currency)
-	{
-		//button[@name="EUR"]
-		driver.findElement(Currencybtn).click();
-	    WebElement currencyOption = driver.findElement(By.xpath("//button[@name='" + currency + "']"));
-	    currencyOption.click();
-	    return true;
-	}
-	public void redirecttpcontacus()
-	{
-		driver.findElement(contactusbtn).click();
-	}
-	
-	public boolean checkedloginin()
-	{
-		driver.findElement(Account).click();
-		return !driver.findElement(By.xpath("//a[text()=\"Login\"]")).isDisplayed();
-	}
-	public void clickonMyAccount()
-	{
-		driver.findElement(MyAccount).click();
-	}
-	public void makelogout()
-	{
-		driver.findElement(Account).click();
-		driver.findElement(Logout).click();
-	}
-	
-	
-	
+    WebDriver driver;
+    ConfigReader configReader;
+    WebDriverWait wait;
+
+    @FindBy(xpath = "//a[@title='My Account']")
+    private WebElement myAccount;
+
+    @FindBy(name = "search")
+    private WebElement searchBar;
+
+    @FindBy(xpath = "//button[@type='button' and @class='btn btn-default btn-lg']")
+    private WebElement searchButton;
+
+    @FindBy(xpath = "//ul[contains(@class, 'navbar-nav')]/li/a")
+    private List<WebElement> categories;
+
+    @FindBy(className = "dropdown-toggle")
+    private WebElement currencyButton;
+
+    @FindBy(linkText = "Contact Us")
+    private WebElement contactUsButton;
+
+    @FindBy(linkText = "My Account")
+    private WebElement myAccountLink;
+
+    @FindBy(linkText = "Logout")
+    private WebElement logoutLink;
+
+    @FindBy(linkText = "Register")
+    private WebElement registerLink;
+
+    @FindBy(linkText = "Login")
+    private WebElement loginLink;
+
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        configReader = new ConfigReader("src/main/resources/config.properties");
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.get(configReader.getProperty("url"));
+    }
+
+    public void searchProduct(String product) {
+        searchBar.clear();
+        searchBar.sendKeys(product);
+        searchButton.click();
+    }
+
+    public void browseViaCategory(String category, String subcategory) {
+        for (WebElement categoryElement : categories) {
+            if (categoryElement.getText().equalsIgnoreCase(category)) {
+                categoryElement.click();
+                WebElement subCategoryElement = wait.until(ExpectedConditions.elementToBeClickable(By.linkText(subcategory)));
+                subCategoryElement.click();
+                return;
+            }
+        }
+    }
+
+    public void clickOnRegister() {
+        myAccount.click();
+        registerLink.click();
+    }
+
+    public void clickOnLogin() {
+        myAccount.click();
+        loginLink.click();
+    }
+
+    public void changeCurrency(String currency) {
+        currencyButton.click();
+        WebElement currencyOption = driver.findElement(By.name(currency));
+        currencyOption.click();
+    }
+
+    public void redirectToContactUs() {
+        contactUsButton.click();
+    }
+
+    public boolean isLoggedIn() {
+        myAccount.click();
+        return !loginLink.isDisplayed();
+    }
+
+    public void clickOnMyAccount() {
+        myAccountLink.click();
+    }
+
+    public void logout() {
+        myAccount.click();
+        logoutLink.click();
+    }
 }

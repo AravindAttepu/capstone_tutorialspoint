@@ -1,53 +1,76 @@
 package Pages;
 
-import static org.testng.Assert.assertNotNull;
+import Utilities.ConfigReader;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import Utilities.WaitUtil;
-
 public class RegisterPage {
 
-	WebDriver driver=null;
-	By firstname = By.id("input-firstname");
-	By lastname= By.id("input-lastname");
-	By mail = By.id("input-email");
-	By telephone= By.id("input-telephone");
-	By password = By.id("input-password");
-	By cpassword = By.id("input-confirm");
-	By subscribe = By.xpath("//label[text()=\"Yes\"]");
-	By unsubscribe = By.xpath("//label[text()=\"No\"]");
-	By policy = By.xpath("//input[@type= \"checkbox\"]");
-	By submit= By.xpath("//input[@type=\"submit\"]");
-	
-	public RegisterPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		this.driver= driver;
-	}
-	
-	public boolean reigisteruser(Map<String, String> data)
-	{
-		try {
-			
-		//driver.get("https://tutorialsninja.com/demo/index.php?route=account/register");
-		WaitUtil.waitForPageLoad(driver, 20);
-		driver.findElement(firstname).sendKeys(data.get("firstname"));
-		driver.findElement(lastname).sendKeys(data.get("lastname"));
-		driver.findElement(mail).sendKeys(data.get("mail"));
-		driver.findElement(telephone).sendKeys(data.get("phone"));
-		driver.findElement(password).sendKeys(data.get("password"));
-		driver.findElement(cpassword).sendKeys(data.get("password"));
-		driver.findElement(subscribe).click();
-		driver.findElement(policy).click();
-		driver.findElement(submit).click();
-		return true;
+    WebDriver driver;
+    ConfigReader configReader;
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			return false;
-		}
-	}
+    // Locators
+    @FindBy(id = "input-firstname")
+    private WebElement firstname;
+
+    @FindBy(id = "input-lastname")
+    private WebElement lastname;
+
+    @FindBy(id = "input-email")
+    private WebElement email;
+
+    @FindBy(id = "input-telephone")
+    private WebElement telephone;
+
+    @FindBy(id = "input-password")
+    private WebElement password;
+
+    @FindBy(id = "input-confirm")
+    private WebElement confirmPassword;
+
+    @FindBy(xpath = "//label[text()='Yes']")
+    private WebElement subscribeYes;
+
+    @FindBy(xpath = "//label[text()='No']")
+    private WebElement subscribeNo;
+
+    @FindBy(xpath = "//input[@type='checkbox']")
+    private WebElement policy;
+
+    @FindBy(xpath = "//input[@type='submit']")
+    private WebElement submit;
+
+    public RegisterPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        configReader = new ConfigReader("src/main/resources/config.properties");
+    }
+
+    /**
+     * Registers a new user.
+     * @param data A map containing user registration data (firstname, lastname, email, phone, password).
+     * @return True if registration is successful, false otherwise.
+     */
+    public boolean registerUser(Map<String, String> data) {
+        try {
+            driver.get(configReader.getProperty("url") + "index.php?route=account/register");
+            firstname.sendKeys(data.get("firstname"));
+            lastname.sendKeys(data.get("lastname"));
+            email.sendKeys(data.get("mail"));
+            telephone.sendKeys(data.get("phone"));
+            password.sendKeys(data.get("password"));
+            confirmPassword.sendKeys(data.get("password"));
+            subscribeYes.click();
+            policy.click();
+            submit.click();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
