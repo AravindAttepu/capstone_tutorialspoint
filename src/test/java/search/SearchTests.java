@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SearchTests extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testValidProductSearch() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Valid product search");
@@ -28,7 +28,7 @@ public class SearchTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testInvalidProductSearch() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Invalid product search");
@@ -43,7 +43,7 @@ public class SearchTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 3)
     public void testBlankProductSearch() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Blank product search");
@@ -58,7 +58,7 @@ public class SearchTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 4)
     public void testSpecialCharSearch() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Special character search");

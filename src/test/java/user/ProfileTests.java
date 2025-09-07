@@ -20,7 +20,7 @@ public class ProfileTests extends BaseTest {
 
   
 
-    @Test
+    @Test(priority = 1)
     public void testEditProfileDetails() throws IOException {
     	try {
     	    test= ReportManager.createTest("Edit profile", "Editing profile details");
@@ -51,7 +51,7 @@ public class ProfileTests extends BaseTest {
 		}
     }
 
-    @Test
+    @Test(priority = 2)
     public void testPasswordChangeFlow() throws IOException {
     	try {
 			
@@ -83,7 +83,7 @@ public class ProfileTests extends BaseTest {
 		}
     }
 
-    @Test
+    @Test(priority = 3)
     public void testForgotPasswordResetEmail() throws IOException {  	try {
 			
     	test= ReportManager.createTest("forgot password", "changing password before login");

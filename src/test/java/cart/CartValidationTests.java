@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 public class CartValidationTests extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testCartSummaryDetails() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Verify cart summary details");
@@ -38,7 +38,7 @@ public class CartValidationTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testCartPersistenceAcrossPages() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Verify cart persistence");

@@ -16,7 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class CartUpdateTests extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testUpdateCartQuantity() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Update cart quantity");
@@ -39,7 +39,7 @@ public class CartUpdateTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testInvalidQuantity() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Invalid quantity in cart");
@@ -62,7 +62,7 @@ public class CartUpdateTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 3)
     public void testRemoveProductFromCart() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Remove product from cart");

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AddToCartTests extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testAddProductSingleQty() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Add single quantity to cart");
@@ -34,7 +34,7 @@ public class AddToCartTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testAddProductSpecificQty() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Add specific quantity to cart");

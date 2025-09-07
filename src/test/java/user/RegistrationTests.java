@@ -17,7 +17,7 @@ import Utilities.ScannerUtil;
 public class RegistrationTests extends BaseTest {
 
 
-    @Test
+    @Test(priority = 1)
     public void testValidUserRegistration() throws IOException {
     	try {
 			
@@ -36,7 +36,7 @@ public class RegistrationTests extends BaseTest {
 		}
     }
 
-    @Test
+    @Test(priority = 2)
     public void testDuplicateEmailRegistration() throws IOException {
     	try {
 			

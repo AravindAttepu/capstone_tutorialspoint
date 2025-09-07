@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 public class CheckoutTests extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void testProceedToCheckoutGuestOption() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Proceed to checkout as guest");
@@ -41,7 +41,7 @@ public class CheckoutTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testGuestCheckoutBillingShipping() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Guest checkout with billing and shipping");
@@ -70,7 +70,7 @@ public class CheckoutTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 3)
     public void testRegisteredUserCheckout() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Registered user checkout");
@@ -105,7 +105,7 @@ public class CheckoutTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 4)
     public void testAddNewDeliveryAddress() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Add new delivery address");
@@ -140,7 +140,7 @@ public class CheckoutTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 5)
     public void testMandatoryAddressFields() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Mandatory address fields");

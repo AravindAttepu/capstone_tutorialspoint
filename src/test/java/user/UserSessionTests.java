@@ -13,7 +13,7 @@ public class UserSessionTests extends BaseTest {
 
  
 
-    @Test
+    @Test(priority = 1)
     public void testLogoutFunctionality() throws IOException {
     	try {
     		test= ReportManager.createTest("Logout", "Tessting logout functionality");

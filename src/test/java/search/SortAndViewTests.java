@@ -25,7 +25,7 @@ public class SortAndViewTests extends BaseTest {
         productsPage = new ProductsPage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void testSortByPriceLowToHigh() {
         productsPage.sortBy("Price (Low > High)");
         List<Double> prices = productsPage.getProductPrices();
@@ -34,7 +34,7 @@ public class SortAndViewTests extends BaseTest {
         Assert.assertEquals(prices, sortedPrices, "Products are not sorted by price low to high");
     }
 
-    @Test
+    @Test(priority = 2)
     public void testSortByNameAZ() {
         productsPage.sortBy("Name (A - Z)");
         List<String> names = productsPage.getProductNames();
@@ -43,7 +43,7 @@ public class SortAndViewTests extends BaseTest {
         Assert.assertEquals(names, sortedNames, "Products are not sorted by name A-Z");
     }
 
-    @Test
+    @Test(priority = 3)
     public void testSortByRating() {
         productsPage.sortBy("Rating (Highest)");
         // We can't easily verify the rating sort without visibility of the rating on the page
@@ -51,7 +51,7 @@ public class SortAndViewTests extends BaseTest {
         Assert.assertTrue(productsPage.areProductsDisplayed(), "Products are not displayed after sorting by rating");
     }
 
-    @Test
+    @Test(priority = 4)
     public void testViewProductDetails() {
         productsPage.viewProduct("iMac");
         ProductPage productPage = new ProductPage(driver);
@@ -60,9 +60,10 @@ public class SortAndViewTests extends BaseTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("product/product"));
     }
 
-    @Test
+    @Test(priority = 5)
     public void testProductImageGallery() {
-        productsPage.viewProduct("iMac");
+        productsPage.viewProduct("iMac
+");
         // The ProductPage object does not have image gallery elements. 
         // We would need to add them to test this functionality.
         // For now, we will just assert that we are on the product page.

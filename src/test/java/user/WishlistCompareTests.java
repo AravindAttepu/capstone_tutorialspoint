@@ -10,10 +10,10 @@ public class WishlistCompareTests extends BaseTest {
     @BeforeClass
     public void setup() {}
 
-    @Test
+    @Test(priority = 1)
     public void testAddToWishlist() {}
 
-    @Test
+    @Test(priority = 2)
     public void testCompareProducts() {}
 
     @AfterClass

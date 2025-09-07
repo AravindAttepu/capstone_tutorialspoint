@@ -22,7 +22,7 @@ public class FilterTests extends BaseTest {
         productsPage = new ProductsPage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void testFilterByCategory() {
         productsPage.selectCategory("Monitors");
         Assert.assertTrue(productsPage.areProductsDisplayed(), "Products are not displayed after filtering by category");
@@ -34,7 +34,7 @@ public class FilterTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
     public void testFilterByPriceRange() {
         productsPage.setPriceRange("100", "500");
         Assert.assertTrue(productsPage.areProductsDisplayed(), "Products are not displayed after filtering by price");
@@ -44,7 +44,7 @@ public class FilterTests extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 3)
     public void testFilterWithNoMatchingPrice() {
         productsPage.setPriceRange("1000", "2000");
         Assert.assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed for a price range with no results");

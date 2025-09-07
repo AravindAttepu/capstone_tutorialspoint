@@ -19,7 +19,7 @@ public class LoginTests extends BaseTest {
 
   
 
-    @Test
+    @Test(priority = 1)
     public void testLoginValidCredentials() throws IOException {
     	try {
     		
@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
 		}
     }
 
-    @Test
+    @Test(priority = 2)
     public void testLoginInvalidCredentials() throws IOException {
     	try {
     		test= ReportManager.createTest("Login user", "entering invalid details of user");

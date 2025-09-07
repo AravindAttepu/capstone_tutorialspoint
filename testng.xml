@@ -9,6 +9,23 @@
       <class name="order.OrderHistoryTests"/>
       <class name="order.OrderReturnTests"/>
       <class name="search.SearchTests"/>
+      <class name="search.SortAndViewTests"/>
+      <class name="search.FilterTests"/>
+      <class name="user.WishlistCompareTests"/>
+      <class name="user.RegisterTests"/>
+      <class name="user.AccountTests"/>
+      <class name="checkout.ShippingTests"/>
+      <class name="cart.CartUpdateTests"/>
+      <class name="cart.AddToCartTests"/>
+      <class name="cart.CartValidationTests"/>
+      <class name="order.CouponTests"/>
+      <class name="order.OrderTests"/>
+      <class name="order.PaymentTests"/>
+      <class name="user.UserSessionTests"/>
+      <class name="user.MiscTests"/>
+      <class name="user.RegistrationTests"/>
+      <class name="user.LoginTests"/>
+      <class name="user.ProfileTests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -16,7 +16,7 @@ public class MiscTests extends BaseTest {
 
     
 
-    @Test
+    @Test(priority = 1)
     public void testChangeCurrencyPersistence() throws IOException {
     	try {
     		
@@ -33,7 +33,7 @@ public class MiscTests extends BaseTest {
 		}
     }
 
-    @Test
+    @Test(priority = 2)
     public void testContactUsFormSubmission() {
         try {
     	    test= ReportManager.createTest("Redirect to contact us", "jump to contact us page ");
