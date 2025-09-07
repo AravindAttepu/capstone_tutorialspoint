@@ -61,7 +61,7 @@ public class UserIdentity extends BaseTest {
     public void forgottenPassword() throws IOException
     {
         test = ReportManager.createTest("TutorialPoint", "Forgotten Password");
-        Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+        Map<String, String> data = ScannerUtil.readExcelTo.readExcelToMap("src/main/resources/UserDetails.xlsx");
         LoginPage loginPage= new LoginPage(driver);
         assertTrue(loginPage.forgottenPassword(data),"Forgotten Password Test Failed");
     }

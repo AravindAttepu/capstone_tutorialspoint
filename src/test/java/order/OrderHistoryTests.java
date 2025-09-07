@@ -21,6 +21,9 @@ public class OrderHistoryTests extends BaseTest {
 
             test.info("Registering a new user");
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+            String uniqueEmail = "testuser" + System.currentTimeMillis() + "@example.com";
+            data.put("email", uniqueEmail);
+
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 

@@ -1,6 +1,6 @@
 package Testcases;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Map;
@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import Base.BaseTest;
 import Pages.CartPage;
+import Pages.CheckoutPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.ProductPage;
@@ -23,33 +24,30 @@ public class EndToEnd extends BaseTest {
     @Test
     public void endToEndTest() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint", "End-to-End Test");
+            test = ReportManager.createTest("End to End", "Perform an end-to-end test");
 
-            // Registration
-            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+            test.info("Registering a new user");
+            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
-            // Login
+            test.info("Logging in with the new user");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login Failed");
 
-            // Search and view product
+            test.info("Placing an order");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
-
-            // View product
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewProduct("iPhone");
-
-            // Add to cart
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
-
-            // Checkout
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.confirmOrder();
+            test.pass("Successfully completed end-to-end test");
 
         } catch (Exception e) {
             logFailure(e, "endToEndTest");

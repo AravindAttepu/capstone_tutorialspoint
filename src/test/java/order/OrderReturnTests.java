@@ -17,10 +17,10 @@ public class OrderReturnTests extends BaseTest {
     @Test
     public void testRequestAndVerifyProductReturn() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint", "Request and Verify Product Return");
+            test = ReportManager.createTest("Return Order", "Request and Verify Product Return");
 
             test.info("Registering a new user");
-            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
@@ -41,10 +41,12 @@ public class OrderReturnTests extends BaseTest {
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.confirmOrder();
 
-            test.info("Requesting a return");
-            OrderHistoryPage orderHistoryPage = new OrderHistoryPage(driver);
-            orderHistoryPage.goToOrderHistory();
-            orderHistoryPage.requestReturn();
+            test.info("Requesting a product return");
+            ReturnPage returnPage = new ReturnPage(driver);
+            returnPage.requestReturn("12345", "2023-01-01", "product", "code", "reason");
+
+            test.info("Verifying the product return");
+            assertTrue(returnPage.isReturnRequestSubmitted(), "Return request was not submitted");
             test.pass("Successfully requested and verified product return");
 
         } catch (Exception e) {

@@ -67,7 +67,11 @@ public class RegisterPage {
             subscribeYes.click();
             policy.click();
             submit.click();
-            return true;
+            if (driver.getCurrentUrl().contains("success")) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;

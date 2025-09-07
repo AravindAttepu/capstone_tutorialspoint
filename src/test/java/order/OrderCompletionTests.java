@@ -17,10 +17,10 @@ public class OrderCompletionTests extends BaseTest {
     @Test
     public void testPlaceOrderAndVerifyConfirmation() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint", "Place Order and Verify Confirmation");
+            test = ReportManager.createTest("Complete Order", "Place an Order and Verify Confirmation");
 
             test.info("Registering a new user");
-            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+            Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
@@ -28,27 +28,23 @@ public class OrderCompletionTests extends BaseTest {
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login Failed");
 
-            test.info("Searching for a product");
+            test.info("Placing an order");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
-
-            test.info("Viewing the product");
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
-
-            test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
-            assertTrue(productPage.addToCart(), "Add to cart failed");
-
-            test.info("Proceeding to checkout");
+            productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
-
-            test.info("Confirming the order");
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.confirmOrder();
-            test.pass("Order placed and confirmation verified successfully");
+
+            test.info("Verifying order confirmation");
+            OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+            assertTrue(orderConfirmationPage.isOrderPlaced(), "Order was not placed successfully");
+            test.pass("Successfully placed order and verified confirmation");
 
         } catch (Exception e) {
             logFailure(e, "testPlaceOrderAndVerifyConfirmation");

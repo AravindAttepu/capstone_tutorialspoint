@@ -38,7 +38,7 @@ public class ScannerUtil {
                 Cell valueCell = row.getCell(1);
 
                 if (keyCell != null && valueCell != null) {
-                    String key = formatter.formatCellValue(keyCell).trim();
+                    String key = formatter.formatCellValue(keyCell).trim().toLowerCase();
                     String value = formatter.formatCellValue(valueCell).trim();
                     if (!key.isEmpty()) {
                         data.put(key, value);
