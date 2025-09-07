@@ -1,16 +1,40 @@
 package user;
 
 
+import java.io.IOException;
+
 import org.testng.annotations.*;
 
-public class UserSessionTests {
+import Base.BaseTest;
+import Pages.HomePage;
+import Utilities.ReportManager;
 
-    @BeforeClass
-    public void setup() {}
+public class UserSessionTests extends BaseTest {
+
+ 
 
     @Test
-    public void testLogoutFunctionality() {}
+    public void testLogoutFunctionality() throws IOException {
+    	try {
+    		test= ReportManager.createTest("Logout", "Tessting logout functionality");
+    		test.info("test started");
+    		HomePage homePage = new HomePage(driver);
+    		test.info("home page object created");
+        	if(!homePage.checkedloginin())
+        	{
+        		test.info("user logged in");
+        		homePage.makelogout();
+        		test.info("user kogged out");
+        	}
+        	else {
+				test.info("user not logged in");
+			}
+        	test.pass("test passed");
+		} catch (Exception e) {
+			// TODO: handle exception
+			logFailure(e, "logout failed");
+		}
+    }
 
-    @AfterClass
-    public void tearDown() {}
+   
 }

@@ -3,7 +3,9 @@ package search;
 
 import org.testng.annotations.*;
 
-public class FilterTests {
+import Base.BaseTest;
+
+public class FilterTests extends BaseTest {
 
     @BeforeClass
     public void setup() {}

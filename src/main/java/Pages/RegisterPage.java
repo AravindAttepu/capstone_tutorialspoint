@@ -21,6 +21,7 @@ public class RegisterPage {
 	By subscribe = By.xpath("//label[text()=\"Yes\"]");
 	By unsubscribe = By.xpath("//label[text()=\"No\"]");
 	By policy = By.xpath("//input[@type= \"checkbox\"]");
+	By submit= By.xpath("//input[@type=\"submit\"]");
 	
 	public RegisterPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -29,7 +30,9 @@ public class RegisterPage {
 	
 	public boolean reigisteruser(Map<String, String> data)
 	{
-		driver.get("https://tutorialsninja.com/demo/index.php?route=account/register");
+		try {
+			
+		//driver.get("https://tutorialsninja.com/demo/index.php?route=account/register");
 		WaitUtil.waitForPageLoad(driver, 20);
 		driver.findElement(firstname).sendKeys(data.get("firstname"));
 		driver.findElement(lastname).sendKeys(data.get("lastname"));
@@ -39,6 +42,12 @@ public class RegisterPage {
 		driver.findElement(cpassword).sendKeys(data.get("password"));
 		driver.findElement(subscribe).click();
 		driver.findElement(policy).click();
+		driver.findElement(submit).click();
 		return true;
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 }

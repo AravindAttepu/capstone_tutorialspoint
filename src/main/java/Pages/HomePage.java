@@ -9,10 +9,15 @@ import org.openqa.selenium.WebElement;
 public class HomePage {
 
 	WebDriver driver= null;
+	
+	By Account= By.xpath("//a[@title='My Account']");
 	By searchbar= By.xpath("//input[@name=\"search\"]");
 	By searchbtn= By.xpath("//button[@type=\"button\"]/i");
 	By categoriespath= By.xpath("//ul[@class=\"nav navbar-nav\"]/li");
-	
+	By Currencybtn= By.xpath("//button[@class=\"btn btn-link dropdown-toggle\"]");
+	By contactusbtn= By.xpath("//a[text()=\"Contact Us\"]");
+	By MyAccount= By.xpath("//ul[@class=\"list-unstyled\"]/li/  a[text()=\"My Account\"]");
+	By Logout= By.xpath("//ul[@class=\"list-unstyled\"]/li/  a[text()=\"Logout\"]");
 	
 	public HomePage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -59,6 +64,47 @@ public class HomePage {
 		return false;
 		
 	}
+	public void clickonregister()
+	{
+		driver.findElement(Account).click();
+		driver.findElement(By.xpath("//a[text()=\"Register\"]")).click();
+		
+	}
+	
+	public void clickonlogin()
+	{
+		driver.findElement(Account).click();
+		driver.findElement(By.xpath("//a[text()=\"Login\"]")).click();
+		
+	}
+	public boolean changecurrency(String currency)
+	{
+		//button[@name="EUR"]
+		driver.findElement(Currencybtn).click();
+	    WebElement currencyOption = driver.findElement(By.xpath("//button[@name='" + currency + "']"));
+	    currencyOption.click();
+	    return true;
+	}
+	public void redirecttpcontacus()
+	{
+		driver.findElement(contactusbtn).click();
+	}
+	
+	public boolean checkedloginin()
+	{
+		driver.findElement(Account).click();
+		return !driver.findElement(By.xpath("//a[text()=\"Login\"]")).isDisplayed();
+	}
+	public void clickonMyAccount()
+	{
+		driver.findElement(MyAccount).click();
+	}
+	public void makelogout()
+	{
+		driver.findElement(Account).click();
+		driver.findElement(Logout).click();
+	}
+	
 	
 	
 }

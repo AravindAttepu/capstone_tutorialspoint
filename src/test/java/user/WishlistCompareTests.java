@@ -3,7 +3,9 @@ package user;
 
 import org.testng.annotations.*;
 
-public class WishlistCompareTests {
+import Base.BaseTest;
+
+public class WishlistCompareTests extends BaseTest {
 
     @BeforeClass
     public void setup() {}
