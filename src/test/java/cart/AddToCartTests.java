@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertTrue;
 
 public class AddToCartTests extends BaseTest {
@@ -19,10 +20,10 @@ public class AddToCartTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Add single quantity to cart");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             assertTrue(productPage.addToCart(), "Add to cart failed");
         } catch (Exception e) {

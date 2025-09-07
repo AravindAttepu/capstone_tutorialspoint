@@ -32,9 +32,9 @@ public class ProductPage {
     public void addToCart() {
         addToCartButton.click();
     }
-    public void addToCart(String quantity) {
+    public void addToCart(String i) {
     	productquantity.clear();
-    	productquantity.sendKeys(quantity);
+    	productquantity.sendKeys(i);
         addToCartButton.click();
     }
 
