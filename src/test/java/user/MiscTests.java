@@ -25,7 +25,7 @@ public class MiscTests extends BaseTest {
     		HomePage page= new HomePage(driver);
     		test.info("Home Page object loaded");
     	 assertTrue(page.changeCurrency("EUR"));
-    	 test.pass("currency chaged");
+    	 test.pass("currency changed");
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -35,19 +35,21 @@ public class MiscTests extends BaseTest {
 
     @Test
     public void testContactUsFormSubmission() {
-    	test= ReportManager.createTest("Redirect to contact us", "jump to contact us page ");
-    	test.info("test started");
-    	HomePage page=new HomePage(driver);
-    	test.info("home page object loaded");
-    	page.redirectToContactUs();
-    	test.info("redirected to contactus");
-    	ContactUsPage contactUsPage = new ContactUsPage(driver);
-    	test.info("contactuspage object loaded");
-    	contactUsPage.fillform();
-    	test.info("filled form and submittted");
-    	test.pass("Summary submitted via contacy us");
-    	
-    	//
+        try {
+    	    test= ReportManager.createTest("Redirect to contact us", "jump to contact us page ");
+    	    test.info("test started");
+    	    HomePage page=new HomePage(driver);
+    	    test.info("home page object loaded");
+    	    page.redirectToContactUs();
+    	    test.info("redirected to contactus");
+    	    ContactUsPage contactUsPage = new ContactUsPage(driver);
+    	    test.info("contactuspage object loaded");
+    	    contactUsPage.fillform();
+    	    test.info("filled form and submitted");
+    	    test.pass("Summary submitted via contact us");
+        } catch (Exception e) {
+            logFailure(e, "testContactUsFormSubmission");
+        }
     }
 
 }

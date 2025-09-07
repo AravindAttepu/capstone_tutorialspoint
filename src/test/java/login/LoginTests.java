@@ -20,13 +20,14 @@ public class LoginTests extends BaseTest {
             test = ReportManager.createTest("TutorialPoint", "Valid Login");
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 
-            // Registration
+            test.info("Registering a new user");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
-            // Login
+            test.info("Logging in with valid credentials");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login Failed");
+            test.pass("Valid login test successful");
 
         } catch (Exception e) {
             logFailure(e, "testValidLogin");
@@ -40,9 +41,10 @@ public class LoginTests extends BaseTest {
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
             data.put("email", "invalid@email.com");
 
-            // Login
+            test.info("Attempting to log in with invalid credentials");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Invalid Login test failed");
+            test.pass("Invalid login test successful");
 
         } catch (Exception e) {
             logFailure(e, "testInvalidLogin");

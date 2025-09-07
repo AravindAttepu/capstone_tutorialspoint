@@ -19,16 +19,16 @@ public class OrderReturnTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Request and Verify Product Return");
 
-            // Registration
+            test.info("Registering a new user");
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
-            // Login
+            test.info("Logging in with the new user");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login Failed");
 
-            // Place an order
+            test.info("Placing an order");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
@@ -41,10 +41,11 @@ public class OrderReturnTests extends BaseTest {
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.confirmOrder();
 
-            // Request a return
+            test.info("Requesting a return");
             OrderHistoryPage orderHistoryPage = new OrderHistoryPage(driver);
             orderHistoryPage.goToOrderHistory();
             orderHistoryPage.requestReturn();
+            test.pass("Successfully requested and verified product return");
 
         } catch (Exception e) {
             logFailure(e, "testRequestAndVerifyProductReturn");

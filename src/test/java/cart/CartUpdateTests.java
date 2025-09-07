@@ -20,15 +20,20 @@ public class CartUpdateTests extends BaseTest {
     public void testUpdateCartQuantity() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Update cart quantity");
+            test.info("Searching for a product");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
+            test.info("Viewing the product");
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
+            test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
+            test.info("Updating cart quantity");
             assertTrue(cartPage.updateQuantity(2), "Update quantity failed");
+            test.pass("Successfully updated the cart quantity");
         } catch (Exception e) {
             logFailure(e, "testUpdateCartQuantity");
         }
@@ -38,15 +43,20 @@ public class CartUpdateTests extends BaseTest {
     public void testInvalidQuantity() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Invalid quantity in cart");
+            test.info("Searching for a product");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
+            test.info("Viewing the product");
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
+            test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
+            test.info("Updating with invalid quantity");
             assertTrue(cartPage.updateQuantity(0), "Invalid quantity test failed");
+            test.pass("Successfully handled invalid quantity update");
         } catch (Exception e) {
             logFailure(e, "testInvalidQuantity");
         }
@@ -56,15 +66,20 @@ public class CartUpdateTests extends BaseTest {
     public void testRemoveProductFromCart() throws IOException {
         try {
             test = ReportManager.createTest("TutorialPoint", "Remove product from cart");
+            test.info("Searching for a product");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
+            test.info("Viewing the product");
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
+            test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
+            test.info("Removing product from cart");
             assertTrue(cartPage.removeProduct(), "Remove product failed");
+            test.pass("Successfully removed product from the cart");
         } catch (Exception e) {
             logFailure(e, "testRemoveProductFromCart");
         }

@@ -23,8 +23,9 @@ public class ProfileTests extends BaseTest {
     @Test
     public void testEditProfileDetails() throws IOException {
     	try {
-		test= ReportManager.createTest("Edit profile", "Editing profile details");
-    	HomePage homePage = new HomePage(driver);
+    	    test= ReportManager.createTest("Edit profile", "Editing profile details");
+            test.info("Checking if user is logged in");
+    	    HomePage homePage = new HomePage(driver);
     	if(!homePage.isLoggedIn())
     	{
     		homePage.clickOnLogin();
@@ -38,6 +39,7 @@ public class ProfileTests extends BaseTest {
     	homePage.clickOnMyAccount();
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangeaccountdetails();
+        test.pass("Profile details edited successfully");
     	
     	//after check Success: Your account has been successfully updated.
     	
@@ -54,6 +56,7 @@ public class ProfileTests extends BaseTest {
     	try {
 			
     	test= ReportManager.createTest("Edit password", "changing password after login");
+        test.info("Checking if user is logged in");
     	HomePage homePage = new HomePage(driver);
     	if(!homePage.isLoggedIn())
     	{
@@ -68,6 +71,7 @@ public class ProfileTests extends BaseTest {
     	homePage.clickOnLogin();
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangepassword();
+        test.pass("Password changed successfully");
     	
     	//after check Success: Your account has been successfully updated.
     	
@@ -83,6 +87,7 @@ public class ProfileTests extends BaseTest {
     public void testForgotPasswordResetEmail() throws IOException {  	try {
 			
     	test= ReportManager.createTest("forgot password", "changing password before login");
+        test.info("Checking if user is logged in");
     	HomePage homePage = new HomePage(driver);
     	if(homePage.isLoggedIn())
     	{
@@ -93,6 +98,7 @@ public class ProfileTests extends BaseTest {
     	Map<String, String> userMap=  new HashMap<>();
     	userMap.put("email", "fhfg@gdfg.com");
     	assertTrue(loginPage.forgottenPassword(userMap)," operation forgot password failed");
+        test.pass("Forgot password reset email sent successfully");
     	
     	//after check Success: Your account has been successfully updated.
     	

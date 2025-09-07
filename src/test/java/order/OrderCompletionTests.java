@@ -19,34 +19,36 @@ public class OrderCompletionTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Place Order and Verify Confirmation");
 
-            // Registration
+            test.info("Registering a new user");
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
-            // Login
+            test.info("Logging in with the new user");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login Failed");
 
-            // Search and view product
+            test.info("Searching for a product");
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
 
-            // View product
+            test.info("Viewing the product");
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
 
-            // Add to cart
+            test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             assertTrue(productPage.addToCart(), "Add to cart failed");
 
-            // Checkout
+            test.info("Proceeding to checkout");
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
 
+            test.info("Confirming the order");
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.confirmOrder();
+            test.pass("Order placed and confirmation verified successfully");
 
         } catch (Exception e) {
             logFailure(e, "testPlaceOrderAndVerifyConfirmation");

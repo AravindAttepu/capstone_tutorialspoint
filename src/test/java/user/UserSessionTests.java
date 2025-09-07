@@ -24,7 +24,7 @@ public class UserSessionTests extends BaseTest {
         	{
         		test.info("user logged in");
         		homePage.logout();
-        		test.info("user kogged out");
+        		test.info("user logged out");
         	}
         	else {
 				test.info("user not logged in");
