@@ -21,10 +21,10 @@ public class CartUpdateTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Update cart quantity");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
@@ -39,10 +39,10 @@ public class CartUpdateTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Invalid quantity in cart");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
@@ -57,10 +57,10 @@ public class CartUpdateTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Remove product from cart");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);

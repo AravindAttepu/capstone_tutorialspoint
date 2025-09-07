@@ -40,7 +40,7 @@ public class AddToCartTests extends BaseTest {
             ProductsPage productsPage = new ProductsPage(driver);
             productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
-            assertTrue(productPage.addToCart(3), "Add to cart with specific quantity failed");
+            assertTrue(productPage.addToCart("3"), "Add to cart with specific quantity failed");
         } catch (Exception e) {
             logFailure(e, "testAddProductSpecificQty");
         }

@@ -20,10 +20,10 @@ public class CartValidationTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Verify cart summary details");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
@@ -38,10 +38,10 @@ public class CartValidationTests extends BaseTest {
         try {
             test = ReportManager.createTest("TutorialPoint", "Verify cart persistence");
             HomePage homePage = new HomePage(driver);
-            homePage.searchproduct("iphone");
+            homePage.searchProduct("iphone");
             WaitUtil.waitForPageLoad(driver, 10);
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewproduct();
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             driver.get("https://tutorialsninja.com/demo/index.php?route=common/home");
