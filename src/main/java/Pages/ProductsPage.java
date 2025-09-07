@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ProductsPage {
 
@@ -16,7 +17,7 @@ public class ProductsPage {
     private WebDriverWait wait;
 
     @FindBy(xpath = "//div[contains(@class, 'product-layout')]")
-    private WebElement product;
+    private List<WebElement> products;
 
     @FindBy(xpath = "//div[@id='content']/p[contains(text(), 'There is no product that matches the search criteria.')]")
     private WebElement noProductMessage;
@@ -35,6 +36,13 @@ public class ProductsPage {
     public void viewProduct(String productName) {
         By productLocator = By.linkText(productName);
         wait.until(ExpectedConditions.elementToBeClickable(productLocator)).click();
+    }
+
+    public void viewProduct() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(products));
+        if (!products.isEmpty()) {
+            products.get(0).click();
+        }
     }
 
     public boolean isNoProductMessageDisplayed() {

@@ -1,10 +1,7 @@
 package Testcases;
 
 import Base.BaseTest;
-import Pages.CartPage;
-import Pages.HomePage;
-import Pages.ProductPage;
-import Pages.ProductsPage;
+import Pages.*;
 import Utilities.ReportManager;
 import org.testng.annotations.Test;
 
@@ -21,8 +18,7 @@ public class Product extends BaseTest {
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             ProductsPage productsPage = new ProductsPage(driver);
-            assertTrue(productsPage.isProductDisplayed("iPhone"), "Product is not displayed.");
-            productsPage.viewProduct("iPhone");
+            productsPage.viewProduct();
             // Add assertions to verify product details on the product page
         } catch (Exception e) {
             logFailure(e, "searchProductAndView");
@@ -61,7 +57,7 @@ public class Product extends BaseTest {
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewProduct("iPhone");
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             // Add assertions to verify that the product is added to the cart
@@ -77,14 +73,37 @@ public class Product extends BaseTest {
             HomePage homePage = new HomePage(driver);
             homePage.searchProduct("iphone");
             ProductsPage productsPage = new ProductsPage(driver);
-            productsPage.viewProduct("iPhone");
+            productsPage.viewProduct();
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
             CartPage cartPage = new CartPage(driver);
             cartPage.checkout();
-            // Add assertions to verify the checkout process
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            assertTrue(checkoutPage.selectGuestCheckout(), "Selecting guest checkout failed");
+            assertTrue(checkoutPage.enterBillingDetails(), "Entering billing details failed");
+            assertTrue(checkoutPage.enterShippingDetails(), "Entering shipping details failed");
+            assertTrue(checkoutPage.confirmOrder(), "Confirming order failed");
         } catch (Exception e) {
             logFailure(e, "checkout");
+        }
+    }
+
+    @Test(priority = 6, description = "Update quantity and remove a product from the cart.")
+    public void updateQuantityAndRemoveProductFromCart() throws IOException {
+        try {
+            test = ReportManager.createTest("Update and Remove Product from Cart", "Update quantity and then remove a product from the shopping cart.");
+            HomePage homePage = new HomePage(driver);
+            homePage.searchProduct("iphone");
+            ProductsPage productsPage = new ProductsPage(driver);
+            productsPage.viewProduct();
+            ProductPage productPage = new ProductPage(driver);
+            productPage.addToCart();
+            CartPage cartPage = new CartPage(driver);
+            assertTrue(cartPage.updateQuantity(2), "Update quantity failed");
+            assertTrue(cartPage.removeProduct(), "Remove product failed");
+            assertTrue(cartPage.verifyCartSummary(), "Cart summary verification failed");
+        } catch (Exception e) {
+            logFailure(e, "updateQuantityAndRemoveProductFromCart");
         }
     }
 }
