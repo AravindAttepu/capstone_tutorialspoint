@@ -29,13 +29,15 @@ public class ProductPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addToCart() {
+    public boolean addToCart() {
         addToCartButton.click();
+        return true;
     }
-    public void addToCart(String i) {
+    public boolean addToCart(String i) {
     	productquantity.clear();
     	productquantity.sendKeys(i);
         addToCartButton.click();
+        return true;
     }
 
     public String getAddToCartSuccessMessage() {

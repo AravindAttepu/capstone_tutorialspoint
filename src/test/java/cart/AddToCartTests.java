@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 public class AddToCartTests extends BaseTest {
 

@@ -89,10 +89,11 @@ public class HomePage {
         loginLink.click();
     }
 
-    public void changeCurrency(String currency) {
+    public boolean changeCurrency(String currency) {
         currencyButton.click();
         WebElement currencyOption = driver.findElement(By.name(currency));
         currencyOption.click();
+        return true;
     }
 
     public void redirectToContactUs() {

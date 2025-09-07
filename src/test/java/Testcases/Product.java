@@ -80,7 +80,7 @@ public class Product extends BaseTest {
             cartPage.checkout();
             CheckoutPage checkoutPage = new CheckoutPage(driver);
             assertTrue(checkoutPage.selectGuestCheckout(), "Selecting guest checkout failed");
-            assertTrue(checkoutPage.enterBillingDetails(), "Entering billing details failed");
+            assertTrue(checkoutPage.enterBillingDetails(null), "Entering billing details failed");
             assertTrue(checkoutPage.enterShippingDetails(), "Entering shipping details failed");
             assertTrue(checkoutPage.confirmOrder(), "Confirming order failed");
         } catch (Exception e) {

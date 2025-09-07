@@ -100,7 +100,8 @@ public class ProductsPage {
             if (priceText.contains("\n")) {
                 priceText = priceText.substring(priceText.indexOf("\n") + 1);
             }
-            prices.add(Double.parseDouble(priceText.replaceAll("[^\d.]", "")));
+            prices.add(Double.parseDouble(priceText.replaceAll("[^\\d.]", "")));
+
         }
         return prices;
     }

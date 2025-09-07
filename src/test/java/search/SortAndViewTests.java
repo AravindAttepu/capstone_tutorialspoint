@@ -21,7 +21,7 @@ public class SortAndViewTests extends BaseTest {
     @BeforeClass
     public void setup() {
         HomePage homePage = new HomePage(driver);
-        homePage.search("imac");
+        homePage.searchProduct("imac");
         productsPage = new ProductsPage(driver);
     }
 
