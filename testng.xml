@@ -2,30 +2,33 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="cart.CartTests"/>
+      <class name="Testcases.EndToEnd"/>
+      <class name="Testcases.NegativeScenarios"/>
+      <class name="Testcases.OrderHistory"/>
+      <class name="Testcases.Product"/>
+      <class name="Testcases.UIChecks"/>
+      <class name="Testcases.UserIdentity"/>
+      <class name="cart.AddToCartTests"/>
+      <class name="cart.CartUpdateTests"/>
+      <class name="cart.CartValidationTests"/>
       <class name="checkout.CheckoutTests"/>
+      <class name="checkout.ShippingTests"/>
       <class name="login.LoginTests"/>
+      <class name="order.CouponTests"/>
       <class name="order.OrderCompletionTests"/>
       <class name="order.OrderHistoryTests"/>
       <class name="order.OrderReturnTests"/>
-      <class name="search.SearchTests"/>
-      <class name="search.SortAndViewTests"/>
-      <class name="search.FilterTests"/>
-      <class name="user.WishlistCompareTests"/>
-      <class name="user.RegisterTests"/>
-      <class name="user.AccountTests"/>
-      <class name="checkout.ShippingTests"/>
-      <class name="cart.CartUpdateTests"/>
-      <class name="cart.AddToCartTests"/>
-      <class name="cart.CartValidationTests"/>
-      <class name="order.CouponTests"/>
       <class name="order.OrderTests"/>
       <class name="order.PaymentTests"/>
-      <class name="user.UserSessionTests"/>
-      <class name="user.MiscTests"/>
-      <class name="user.RegistrationTests"/>
+      <class name="search.FilterTests"/>
+      <class name="search.SearchTests"/>
+      <class name="search.SortAndViewTests"/>
       <class name="user.LoginTests"/>
+      <class name="user.MiscTests"/>
       <class name="user.ProfileTests"/>
+      <class name="user.RegistrationTests"/>
+      <class name="user.UserSessionTests"/>
+      <class name="user.WishlistCompareTests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
