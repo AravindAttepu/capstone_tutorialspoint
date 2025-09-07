@@ -62,8 +62,7 @@ public class SortAndViewTests extends BaseTest {
 
     @Test(priority = 5)
     public void testProductImageGallery() {
-        productsPage.viewProduct("iMac
-");
+        productsPage.viewProduct("iMac");
         // The ProductPage object does not have image gallery elements. 
         // We would need to add them to test this functionality.
         // For now, we will just assert that we are on the product page.

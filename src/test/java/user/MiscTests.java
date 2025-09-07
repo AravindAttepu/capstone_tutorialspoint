@@ -24,23 +24,17 @@ public class MiscTests extends BaseTest {
     		test.info("test started");
     		HomePage page= new HomePage(driver);
     		test.info("Home Page object loaded");
-    	
     	 assertTrue(page.changeCurrency("EUR"));
     	 test.pass("currency changed");
 
 		} catch (Exception e) {
-			// TODO: handle exception 
+			// TODO: handle exception
 			logFailure(e, "currency change operation failure");
 		}
     }
 
-<<<<<<< Updated upstream
     @Test(priority = 2)
     public void testContactUsFormSubmission() {
-=======
-    @Test
-    public void testContactUsFormSubmission() throws IOException {
->>>>>>> Stashed changes
         try {
     	    test= ReportManager.createTest("Redirect to contact us", "jump to contact us page ");
     	    test.info("test started");
