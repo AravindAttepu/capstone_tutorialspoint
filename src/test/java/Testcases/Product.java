@@ -14,7 +14,7 @@ import Utilities.WaitUtil;
 
 public class Product extends BaseTest {
 	
-  @Test(priority = '1')
+  @Test(priority = 1)
   public void searchproductandview() throws IOException {
 	  try {
 	 test = ReportManager.createTest("TutorialPoint", "Search and view product");
@@ -32,7 +32,7 @@ public class Product extends BaseTest {
 	 
   }
   
-  @Test(priority = '2')
+  @Test(priority = 2)
   public void Browseviacategoryandfilter() throws IOException
   {
 	  try {
@@ -46,4 +46,52 @@ public class Product extends BaseTest {
 		logFailure(e, "Browseviacategoryandfilter");
 	}
   }
+
+    @Test(priority = 3)
+    public void searchProductInvalid() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Search with invalid keyword");
+            HomePage homePage = new HomePage(driver);
+            homePage.searchproduct("XYZ123");
+            WaitUtil.waitForPageLoad(driver, 10);
+            ProductsPage productsPage = new ProductsPage(driver);
+            assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed");
+        } catch (Exception e) {
+            logFailure(e, "searchProductInvalid");
+        }
+    }
+
+    @Test(priority = 4)
+    public void addProductToCart() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Add product to cart");
+            HomePage homePage = new HomePage(driver);
+            homePage.searchproduct("iphone");
+            WaitUtil.waitForPageLoad(driver, 10);
+            ProductsPage productsPage = new ProductsPage(driver);
+            productsPage.viewproduct();
+            ProductPage productPage = new ProductPage(driver);
+            assertTrue(productPage.addToCart(), "Add to cart failed");
+        } catch (Exception e) {
+            logFailure(e, "addProductToCart");
+        }
+    }
+
+    @Test(priority = 5)
+    public void checkout() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Checkout");
+            HomePage homePage = new HomePage(driver);
+            homePage.searchproduct("iphone");
+            WaitUtil.waitForPageLoad(driver, 10);
+            ProductsPage productsPage = new ProductsPage(driver);
+            productsPage.viewproduct();
+            ProductPage productPage = new ProductPage(driver);
+            productPage.addToCart();
+            CartPage cartPage = new CartPage(driver);
+            assertTrue(cartPage.checkout(), "Checkout failed");
+        } catch (Exception e) {
+            logFailure(e, "checkout");
+        }
+    }
 }

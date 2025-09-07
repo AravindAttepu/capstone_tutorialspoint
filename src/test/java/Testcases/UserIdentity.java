@@ -23,7 +23,7 @@ public class UserIdentity extends BaseTest {
 	  try {
 		  test = ReportManager.createTest("TutorialPoint", "Register and Login");
 		
-	Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+		Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 	RegisterPage accountPage= new RegisterPage(driver);
 	assertTrue(accountPage.reigisteruser(data),"Registration Failed");
 	LoginPage loginPage= new LoginPage(driver);
@@ -45,4 +45,24 @@ public class UserIdentity extends BaseTest {
 		LoginPage loginPage= new LoginPage(driver);
 		assertTrue(loginPage.Accountlogin(data),"Registration Failed");
   }
+
+    @Test
+    public void InvalidLogin() throws IOException
+    {
+        test = ReportManager.createTest("TutorialPoint", "Invalid Login");
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("Email", "invalid@email.com");
+        data.put("Password", "invalidpassword");
+        LoginPage loginPage= new LoginPage(driver);
+        assertTrue(loginPage.invalidLogin(data),"Invalid Login Test Failed");
+    }
+
+    @Test
+    public void forgottenPassword() throws IOException
+    {
+        test = ReportManager.createTest("TutorialPoint", "Forgotten Password");
+        Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
+        LoginPage loginPage= new LoginPage(driver);
+        assertTrue(loginPage.forgottenPassword(data),"Forgotten Password Test Failed");
+    }
 }

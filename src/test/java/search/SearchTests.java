@@ -1,39 +1,59 @@
 package search;
 
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import Base.BaseTest;
+import Pages.HomePage;
+import Utilities.ReportManager;
+import Utilities.WaitUtil;
 import org.testng.annotations.Test;
 
-public class SearchTests {
+import java.io.IOException;
 
-    @BeforeClass
-    public void setup() {
-        System.out.println("Launching browser for Search tests...");
+import static org.testng.Assert.assertTrue;
+
+public class SearchTests extends BaseTest {
+
+    @Test
+    public void testValidProductSearch() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Valid product search");
+            HomePage homePage = new HomePage(driver);
+            assertTrue(homePage.searchproduct("iphone"), "Valid search failed");
+        } catch (Exception e) {
+            logFailure(e, "testValidProductSearch");
+        }
     }
 
     @Test
-    public void testValidProductSearch() {
-        // TODO: implement valid search
+    public void testInvalidProductSearch() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Invalid product search");
+            HomePage homePage = new HomePage(driver);
+            assertTrue(homePage.searchproduct("invalidproduct"), "Invalid search failed");
+        } catch (Exception e) {
+            logFailure(e, "testInvalidProductSearch");
+        }
     }
 
     @Test
-    public void testInvalidProductSearch() {
-        // TODO: implement invalid search
+    public void testBlankProductSearch() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Blank product search");
+            HomePage homePage = new HomePage(driver);
+            assertTrue(homePage.searchproduct(""), "Blank search failed");
+        } catch (Exception e) {
+            logFailure(e, "testBlankProductSearch");
+        }
     }
 
     @Test
-    public void testBlankProductSearch() {
-        // TODO: implement blank input search
-    }
-
-    @Test
-    public void testSpecialCharSearch() {
-        // TODO: implement search with special characters
-    }
-
-    @AfterClass
-    public void tearDown() {
-        System.out.println("Closing browser after Search tests...");
+    public void testSpecialCharSearch() throws IOException {
+        try {
+            test = ReportManager.createTest("TutorialPoint", "Special character search");
+            HomePage homePage = new HomePage(driver);
+            assertTrue(homePage.searchproduct("@#$%"), "Special character search failed");
+        } catch (Exception e) {
+            logFailure(e, "testSpecialCharSearch");
+        }
     }
 }
