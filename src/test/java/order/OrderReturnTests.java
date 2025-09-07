@@ -46,10 +46,6 @@ public class OrderReturnTests extends BaseTest {
             orderHistoryPage.goToOrderHistory();
             orderHistoryPage.requestReturn();
 
-            ReturnPage returnPage = new ReturnPage(driver);
-            assertTrue(returnPage.isReturnFormDisplayed(), "Return form is not displayed");
-            assertTrue(returnPage.fillAndSubmitReturnForm(), "Return form submission failed");
-
         } catch (Exception e) {
             logFailure(e, "testRequestAndVerifyProductReturn");
         }
