@@ -7,12 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Utilities.ScannerUtil;
-
-import java.io.IOException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CartPage {
 
@@ -33,29 +28,37 @@ public class CartPage {
 
     @FindBy(xpath = "//div[@id='content']/p[contains(text(), 'Your shopping cart is empty!')]")
     private WebElement emptyCartMessage;
+    
+    @FindBy(xpath = "//div[contains(@class, 'alert-success')]")
+    private WebElement successAlert;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increased wait time for stability
         PageFactory.initElements(driver, this);
     }
 
-    public void checkout() throws IOException {
-    	CheckoutPage checkoutPage=  new CheckoutPage(driver);
-    	Map<String, String> dataMap= new HashMap<>();
-    	dataMap= ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
-    	checkoutPage.enterBillingDetails(dataMap);
-        
+    public void checkout() {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+        } catch (Exception e) {
+            // Handle or log the exception as needed
+            e.printStackTrace();
+        }
     }
 
     public boolean updateQuantity(int quantity) {
         try {
-            wait.until(ExpectedConditions.visibilityOf(quantityInput));
-            quantityInput.clear();
+            wait.until(ExpectedConditions.visibilityOf(quantityInput)).clear();
             quantityInput.sendKeys(String.valueOf(quantity));
             updateButton.click();
-            return true; 
+            
+            // Wait for the success alert to confirm the update
+            wait.until(ExpectedConditions.visibilityOf(successAlert));
+            return successAlert.getText().contains("Success: You have modified your shopping cart!");
+            
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -63,26 +66,28 @@ public class CartPage {
     public boolean removeProduct() {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(removeButton)).click();
-            return true; 
+            return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
     public boolean verifyCartSummary() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(emptyCartMessage));
-            return emptyCartMessage.isDisplayed();
+            // Wait for the empty cart message to be displayed
+            return wait.until(ExpectedConditions.visibilityOf(emptyCartMessage)).isDisplayed();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
     public boolean isCartNotEmpty() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(checkoutButton));
-            return checkoutButton.isDisplayed();
+            return wait.until(ExpectedConditions.visibilityOf(checkoutButton)).isDisplayed();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

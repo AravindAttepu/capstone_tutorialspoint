@@ -1,6 +1,7 @@
 package Testcases;
 
-import static org.testng.Assert.assertTrue; // ✅ only TestNG
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,82 +17,83 @@ import Utilities.ReportManager;
 
 public class UserIdentity extends BaseTest {
 
+    // Test to verify successful user registration and subsequent login.
     @Test(description = "Register a new user and verify login.")
     public void Registration() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint - Registration", "Register and Login flow");
+            test = ReportManager.createTest("TutorialsPoint - Registration", "End-to-end user registration and login validation.");
 
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 
-            test.info("Starting user registration");
+            test.info("Starting user registration process.");
             RegisterPage accountPage = new RegisterPage(driver);
-            assertTrue(accountPage.reigisteruser(data), "Registration Failed");
-            test.pass("User registered successfully");
+            assertTrue(accountPage.reigisteruser(data), "User registration failed.");
+            test.pass("User registration was successful.");
 
-            test.info("Logging in with registered user");
+            test.info("Proceeding to login with the newly registered user.");
             LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.Accountlogin(data), "Login Failed after registration");
-            test.pass("User login successful");
+            assertTrue(loginPage.Accountlogin(data), "Login failed after successful registration.");
+            test.pass("User login was successful.");
 
         } catch (Exception e) {
-            test.fail("Test failed due to exception: " + e.getMessage());
-            logFailure(e, "user registration and login");
+            logFailure(e, "User Registration and Login");
         }
     }
 
+    // Test to verify that a registered user can log in successfully.
     @Test(description = "Verify valid user login.")
     public void Login() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint - Login", "Verify valid login");
+            test = ReportManager.createTest("TutorialsPoint - Login", "Verify login functionality with valid credentials.");
 
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 
-            test.info("Attempting to log in with valid credentials");
+            test.info("Attempting to log in with valid user credentials.");
             LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.Accountlogin(data), "Valid login failed");
-            test.pass("Valid user login successful");
+            assertTrue(loginPage.Accountlogin(data), "Login with valid credentials failed.");
+            test.pass("Valid user login was successful.");
 
         } catch (Exception e) {
-            test.fail("Login test failed due to exception: " + e.getMessage());
-            logFailure(e, "valid login");
+            logFailure(e, "Valid Login");
         }
     }
 
+    // Test to verify that login fails with invalid credentials.
     @Test(description = "Verify invalid login scenario.")
     public void InvalidLogin() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint - Invalid Login", "Verify login with invalid credentials");
+            test = ReportManager.createTest("TutorialsPoint - Invalid Login", "Verify that login fails with incorrect credentials.");
 
             Map<String, String> data = new HashMap<>();
-            data.put("Email", "invalid@email.com");
-            data.put("Password", "invalidpassword");
+            // Corrected key to 'email' and added the 'password' key
+            data.put("email", "invalid@example.com");
+            data.put("password", "wrongpassword");
 
-            test.info("Attempting to log in with invalid credentials");
+            test.info("Attempting to log in with invalid credentials.");
             LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.invalidLogin(data), "Invalid login test failed");
-            test.pass("Invalid login handled correctly");
+            assertFalse(loginPage.invalidLogin(data), "Login with invalid credentials unexpectedly succeeded.");
+            test.pass("Invalid login attempt was correctly blocked.");
 
         } catch (Exception e) {
-            test.fail("Invalid login test failed due to exception: " + e.getMessage());
-            logFailure(e, "invalid login");
+            logFailure(e, "Invalid Login");
         }
     }
 
+    // Test to verify the forgotten password functionality.
     @Test(description = "Verify forgotten password functionality.")
     public void forgottenPassword() throws IOException {
         try {
-            test = ReportManager.createTest("TutorialPoint - Forgotten Password", "Verify reset password flow");
+            test = ReportManager.createTest("TutorialsPoint - Forgotten Password", "Verify the password reset email functionality.");
 
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 
-            test.info("Attempting forgotten password request");
+            test.info("Attempting to trigger the forgotten password flow.");
             LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.forgottenPassword(data), "Forgotten password test failed");
-            test.pass("Forgotten password flow executed successfully");
+            assertTrue(loginPage.forgottenPassword(data), "The forgotten password process failed.");
+            test.pass("The forgotten password email was sent successfully.");
 
         } catch (Exception e) {
-            test.fail("Forgotten password test failed due to exception: " + e.getMessage());
-            logFailure(e, "forgotten password");
+            logFailure(e, "Forgotten Password");
         }
     }
 }

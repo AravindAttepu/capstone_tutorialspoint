@@ -46,7 +46,8 @@ public class LoginPage {
      */
     public boolean Accountlogin(Map<String, String> data) {
         driver.get(configReader.getProperty("url") + "index.php?route=account/login");
-        this.email.sendKeys(data.get("mail"));
+        // Standardized to use "email"
+        this.email.sendKeys(data.get("email"));
         this.password.sendKeys(data.get("password"));
         loginBtn.click();
         return true; // Assuming login is always successful for this example
@@ -59,7 +60,8 @@ public class LoginPage {
      */
     public boolean invalidLogin(Map<String, String> data) {
         driver.get(configReader.getProperty("url") + "index.php?route=account/login");
-        this.email.sendKeys(data.get("mail"));
+        // Standardized to use "email"
+        this.email.sendKeys(data.get("email"));
         this.password.sendKeys(data.get("password"));
         loginBtn.click();
         return dangerAlert.getText().contains("Warning: No match for E-Mail Address and/or Password.");
@@ -73,6 +75,7 @@ public class LoginPage {
     public boolean forgottenPassword(Map<String, String> data) {
         driver.get(configReader.getProperty("url") + "index.php?route=account/forgotten");
         forgotPasswordBtn.click();
+        // Standardized to use "email"
         this.email.sendKeys(data.get("email"));
         loginBtn.click();
         return successAlert.getText().contains("An email with a confirmation link has been sent your email address.");

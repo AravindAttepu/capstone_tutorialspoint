@@ -38,7 +38,8 @@ public class RegisterPage {
     @FindBy(xpath = "//label[text()='No']")
     private WebElement subscribeNo;
 
-    @FindBy(xpath = "//input[@type='checkbox']")
+    // Using a more specific locator for the privacy policy checkbox
+    @FindBy(name = "agree")
     private WebElement policy;
 
     @FindBy(xpath = "//input[@type='submit']")
@@ -67,11 +68,18 @@ public class RegisterPage {
             password.sendKeys(data.get("password"));
             confirmPassword.sendKeys(data.get("password"));
             subscribeYes.click();
-            policy.click();
+            
+            // Defensive check before clicking
+            if (!policy.isSelected()) {
+                policy.click();
+            }
+            
             submit.click();
+
             if (driver.getCurrentUrl().contains("success")) {
                 return true;
             } else {
+                System.out.println("Registration failed. Current URL: " + driver.getCurrentUrl());
                 return false;
             }
         } catch (Exception e) {
