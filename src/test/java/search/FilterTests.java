@@ -15,15 +15,13 @@ public class FilterTests extends BaseTest {
 
     private ProductsPage productsPage;
 
-    @BeforeClass
-    public void setup() {
-        HomePage homePage = new HomePage(driver);
-        homePage.searchProduct("imac");
-        productsPage = new ProductsPage(driver);
-    }
+ 
 
     @Test(priority = 1)
     public void testFilterByCategory() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.selectCategory("Monitors");
         Assert.assertTrue(productsPage.areProductsDisplayed(), "Products are not displayed after filtering by category");
         List<String> productNames = productsPage.getProductNames();
@@ -36,6 +34,9 @@ public class FilterTests extends BaseTest {
 
     @Test(priority = 2)
     public void testFilterByPriceRange() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.setPriceRange("100", "500");
         Assert.assertTrue(productsPage.areProductsDisplayed(), "Products are not displayed after filtering by price");
         List<Double> productPrices = productsPage.getProductPrices();
@@ -46,6 +47,9 @@ public class FilterTests extends BaseTest {
 
     @Test(priority = 3)
     public void testFilterWithNoMatchingPrice() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);
         productsPage.setPriceRange("1000", "2000");
         Assert.assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed for a price range with no results");
     }

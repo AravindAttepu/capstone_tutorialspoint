@@ -6,14 +6,16 @@ import org.openqa.selenium.WebDriver;
 public class AccountPage {
 
 	WebDriver driver=null;
-	By chageaccountdetails= By.xpath("//a[text()=\"Edit your account information\"]");
-	By changepassword= By.xpath("//a[text()=\"Change your password\"]");
-	
+	By chageaccountdetails= null;
+	By changepassword= null;
 	
 	
 	public AccountPage(WebDriver driver) {
 		this.driver= driver;
 		// TODO Auto-generated constructor stub
+		chageaccountdetails=	By.xpath("//a[@href=\"https://tutorialsninja.com/demo/index.php?route=account/edit\"]");
+		changepassword= By.xpath("//a[@href=\"https://tutorialsninja.com/demo/index.php?route=account/password\"]");
+			
 	}
 	
 	public void clickchangeaccountdetails()

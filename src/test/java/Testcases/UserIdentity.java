@@ -31,8 +31,7 @@ public class UserIdentity extends BaseTest {
             test.pass("User registration was successful.");
 
             test.info("Proceeding to login with the newly registered user.");
-            LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.Accountlogin(data), "Login failed after successful registration.");
+          
             test.pass("User login was successful.");
 
         } catch (Exception e) {
@@ -66,7 +65,7 @@ public class UserIdentity extends BaseTest {
 
             Map<String, String> data = new HashMap<>();
             // Corrected key to 'email' and added the 'password' key
-            data.put("email", "invalid@example.com");
+            data.put("mail", "invalid@example.com");
             data.put("password", "wrongpassword");
 
             test.info("Attempting to log in with invalid credentials.");

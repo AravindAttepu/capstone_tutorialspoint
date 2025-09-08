@@ -107,7 +107,9 @@ public class ProductsPage {
     }
 
     public void selectCategory(String category) {
+    	driver.findElement(By.name("category_id")).click();
         driver.findElement(By.linkText(category)).click();
+        driver.findElement(By.xpath("//input[@id=\"button-search\"]")).click();
     }
 
     public void setPriceRange(String min, String max) {

@@ -3,20 +3,15 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="search.SortAndViewTests">
+      <class name="user.LoginTests">
         <methods>
-          <include name="testSortByPriceLowToHigh"/>
-          <include name="testViewProductDetails"/>
-          <include name="testSortByNameAZ"/>
-          <include name="setup"/>
+          <include name="testLoginInvalidCredentials"/>
           <include name="closeReport"/>
-          <include name="tearDown"/>
-          <include name="testProductImageGallery"/>
           <include name="setupReport"/>
-          <include name="testSortByRating"/>
+          <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- search.SortAndViewTests -->
+      </class> <!-- user.LoginTests -->
       <class name="Testcases.Product">
         <methods>
           <include name="updateQuantityAndRemoveProductFromCart"/>
@@ -29,83 +24,13 @@
       </class> <!-- Testcases.Product -->
       <class name="checkout.CheckoutTests">
         <methods>
-          <include name="testRegisteredUserCheckout"/>
-          <include name="testAddNewDeliveryAddress"/>
-          <include name="testGuestCheckoutBillingShipping"/>
           <include name="closeReport"/>
+          <include name="testGuestCheckoutBillingShipping"/>
           <include name="setupReport"/>
-          <include name="testProceedToCheckoutGuestOption"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- checkout.CheckoutTests -->
-      <class name="user.MiscTests">
-        <methods>
-          <include name="testContactUsFormSubmission"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- user.MiscTests -->
-      <class name="login.LoginTests">
-        <methods>
-          <include name="testValidLogin"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- login.LoginTests -->
-      <class name="user.UserSessionTests">
-        <methods>
-          <include name="testLogoutFunctionality"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- user.UserSessionTests -->
-      <class name="cart.CartValidationTests">
-        <methods>
-          <include name="testCartSummaryDetails"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- cart.CartValidationTests -->
-      <class name="order.OrderReturnTests">
-        <methods>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="testRequestAndVerifyProductReturn"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- order.OrderReturnTests -->
-      <class name="Testcases.UserIdentity">
-        <methods>
-          <include name="Login"/>
-          <include name="Registration"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="forgottenPassword"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- Testcases.UserIdentity -->
-      <class name="user.ProfileTests">
-        <methods>
-          <include name="testEditProfileDetails"/>
-          <include name="testForgotPasswordResetEmail"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="testPasswordChangeFlow"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- user.ProfileTests -->
       <class name="Testcases.OrderHistory">
         <methods>
           <include name="verifyOrderHistory"/>
@@ -115,36 +40,6 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- Testcases.OrderHistory -->
-      <class name="order.OrderCompletionTests">
-        <methods>
-          <include name="closeReport"/>
-          <include name="testPlaceOrderAndVerifyConfirmation"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- order.OrderCompletionTests -->
-      <class name="user.LoginTests">
-        <methods>
-          <include name="testLoginInvalidCredentials"/>
-          <include name="testLoginValidCredentials"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- user.LoginTests -->
-      <class name="cart.CartUpdateTests">
-        <methods>
-          <include name="testUpdateCartQuantity"/>
-          <include name="testRemoveProductFromCart"/>
-          <include name="closeReport"/>
-          <include name="setupReport"/>
-          <include name="testInvalidQuantity"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- cart.CartUpdateTests -->
       <class name="order.OrderHistoryTests">
         <methods>
           <include name="closeReport"/>
@@ -154,36 +49,35 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- order.OrderHistoryTests -->
-      <class name="user.RegistrationTests">
+      <class name="cart.CartUpdateTests">
         <methods>
-          <include name="testValidUserRegistration"/>
           <include name="closeReport"/>
           <include name="setupReport"/>
           <include name="tearDown"/>
+          <include name="testInvalidQuantity"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- user.RegistrationTests -->
+      </class> <!-- cart.CartUpdateTests -->
       <class name="search.FilterTests">
         <methods>
           <include name="testFilterWithNoMatchingPrice"/>
           <include name="testFilterByPriceRange"/>
-          <include name="tearDown"/>
           <include name="testFilterByCategory"/>
-          <include name="setup"/>
           <include name="closeReport"/>
           <include name="setupReport"/>
+          <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- search.FilterTests -->
-      <class name="Testcases.EndToEnd">
+      <class name="Testcases.UserIdentity">
         <methods>
-          <include name="endToEndTest"/>
+          <include name="InvalidLogin"/>
           <include name="closeReport"/>
           <include name="setupReport"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- Testcases.EndToEnd -->
+      </class> <!-- Testcases.UserIdentity -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

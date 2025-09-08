@@ -74,11 +74,13 @@ public class CheckoutPage {
         }
     }
 
-    public boolean enterBillingDetails(Map<String, String> data) {
+    public boolean enterBillingDetails(Map<String, String> data) throws InterruptedException{
         try {
           //  wait.until(ExpectedConditions.visibilityOf(firstNameInput)).sendKeys(data.get("FirstName"));
            
             applycoupon(data.get("coupon"));
+            Thread.sleep(2000);
+            shippingdrop.click();
             postcodeInput.sendKeys(data.get("pincode"));
             new Select(countryDropdown).selectByVisibleText(data.get("country"));
             new Select(regionDropdown).selectByVisibleText(data.get("region"));

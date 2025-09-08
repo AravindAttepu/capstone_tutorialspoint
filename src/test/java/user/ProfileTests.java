@@ -36,7 +36,7 @@ public class ProfileTests extends BaseTest {
 			test.info("loginpage object loaded");
 			assertTrue(loginPage.Accountlogin(data),"Login Failed");
     	}
-    	homePage.clickOnMyAccount();
+    	driver.get("https://tutorialsninja.com/demo/index.php?route=account/account");
     	test.info("Clicked on MYAccount");
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangeaccountdetails();
@@ -69,7 +69,7 @@ public class ProfileTests extends BaseTest {
 			test.info("loginpage object loaded");
 			assertTrue(loginPage.Accountlogin(data),"Login Failed");
     	}
-    	homePage.clickOnLogin();
+    	driver.get("https://tutorialsninja.com/demo/index.php?route=account/account");
     	AccountPage accountPage = new AccountPage(driver);
     	accountPage.clickchangepassword();
         test.pass("Password changed successfully");
@@ -97,7 +97,7 @@ public class ProfileTests extends BaseTest {
     	homePage.clickOnLogin();
     	LoginPage loginPage= new LoginPage(driver);
     	Map<String, String> userMap=  new HashMap<>();
-    	userMap.put("email", "fhfg@gdfg.com");
+    	userMap.put("mail", "fhfg@gdfg.com");
     	assertTrue(loginPage.forgottenPassword(userMap)," operation forgot password failed");
         test.pass("Forgot password reset email sent successfully");
     	

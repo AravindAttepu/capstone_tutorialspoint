@@ -38,10 +38,6 @@ product.showcomparision();
     			
     }
 
-    @Test(priority = 2)
-    public void testCompareProducts() {
-    	
-    }
 
     @AfterClass
     public void tearDown() {}

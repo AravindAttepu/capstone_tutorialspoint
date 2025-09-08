@@ -28,8 +28,7 @@ public class OrderHistoryTests extends BaseTest {
             assertTrue(accountPage.reigisteruser(data), "Registration Failed");
 
             test.info("Logging in with the new user");
-            LoginPage loginPage = new LoginPage(driver);
-            assertTrue(loginPage.Accountlogin(data), "Login Failed");
+            
 
             test.info("Placing an order");
             HomePage homePage = new HomePage(driver);

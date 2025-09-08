@@ -1,6 +1,7 @@
 package login;
 
 import Base.BaseTest;
+import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.RegisterPage;
 import Utilities.ReportManager;
@@ -28,7 +29,9 @@ public class LoginTests extends BaseTest {
             RegisterPage accountPage = new RegisterPage(driver);
             assertTrue(accountPage.reigisteruser(data), "User registration failed.");
             test.pass("User registration was successful.");
-
+            HomePage homePage=new HomePage(driver);
+            homePage.clickOnMyAccount();
+            homePage.logout();
             test.info("Logging in with the newly registered user credentials.");
             LoginPage loginPage = new LoginPage(driver);
             assertTrue(loginPage.Accountlogin(data), "Login failed with valid credentials.");

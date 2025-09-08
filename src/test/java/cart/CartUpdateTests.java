@@ -14,6 +14,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertFalse;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class CartUpdateTests extends BaseTest {
@@ -59,7 +61,7 @@ public class CartUpdateTests extends BaseTest {
             driver.findElement(By.xpath("//span[text() = \"Checkout\"]")).click();
             CartPage cartPage = new CartPage(driver);
             test.info("Updating with invalid quantity");
-            assertTrue(cartPage.updateQuantity(0), "Invalid quantity test failed");
+            assertFalse(cartPage.updateQuantity(0), "Invalid quantity test failed");
             test.pass("Successfully handled invalid quantity update");
         } catch (Exception e) {
             logFailure(e, "testInvalidQuantity");

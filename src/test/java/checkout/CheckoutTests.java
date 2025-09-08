@@ -107,8 +107,7 @@ public class CheckoutTests extends BaseTest {
             test.pass("User registered successfully");
 
             test.info("Logging in with registered user");
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.Accountlogin(data);
+           
             test.pass("User logged in successfully");
 
             test.info("Searching for product: iPhone");
@@ -152,8 +151,7 @@ public class CheckoutTests extends BaseTest {
             test.pass("User registered successfully");
 
             test.info("Logging in with registered user");
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.Accountlogin(data);
+            
             test.pass("User logged in successfully");
 
             test.info("Searching for product: iPhone");

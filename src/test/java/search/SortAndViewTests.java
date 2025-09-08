@@ -16,17 +16,16 @@ import java.util.List;
 
 public class SortAndViewTests extends BaseTest {
 
-    private ProductsPage productsPage;
+   
 
-    @BeforeClass
-    public void setup() {
-        HomePage homePage = new HomePage(driver);
-        homePage.searchProduct("imac");
-        productsPage = new ProductsPage(driver);
-    }
+   
 
     @Test(priority = 1)
     public void testSortByPriceLowToHigh() {
+    	 HomePage homePage = new HomePage(driver);
+         homePage.searchProduct("imac");
+    	ProductsPage productsPage = new ProductsPage(driver);;
+
         productsPage.sortBy("Price (Low > High)");
         List<Double> prices = productsPage.getProductPrices();
         List<Double> sortedPrices = new ArrayList<>(prices);
@@ -36,6 +35,9 @@ public class SortAndViewTests extends BaseTest {
 
     @Test(priority = 2)
     public void testSortByNameAZ() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.sortBy("Name (A - Z)");
         List<String> names = productsPage.getProductNames();
         List<String> sortedNames = new ArrayList<>(names);
@@ -45,6 +47,9 @@ public class SortAndViewTests extends BaseTest {
 
     @Test(priority = 3)
     public void testSortByRating() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.sortBy("Rating (Highest)");
         // We can't easily verify the rating sort without visibility of the rating on the page
         // For now, we just ensure the sort option is selectable and doesn't crash.
@@ -53,6 +58,9 @@ public class SortAndViewTests extends BaseTest {
 
     @Test(priority = 4)
     public void testViewProductDetails() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.viewProduct("iMac");
         ProductPage productPage = new ProductPage(driver);
         // We can't easily get the product name from the product page without updating it.
@@ -62,6 +70,9 @@ public class SortAndViewTests extends BaseTest {
 
     @Test(priority = 5)
     public void testProductImageGallery() {
+    	HomePage homePage = new HomePage(driver);
+        homePage.searchProduct("imac");
+   	ProductsPage productsPage = new ProductsPage(driver);;
         productsPage.viewProduct("iMac");
         // The ProductPage object does not have image gallery elements. 
         // We would need to add them to test this functionality.
