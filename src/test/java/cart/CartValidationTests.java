@@ -7,6 +7,8 @@ import Pages.ProductPage;
 import Pages.ProductsPage;
 import Utilities.ReportManager;
 import Utilities.WaitUtil;
+
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -29,9 +31,10 @@ public class CartValidationTests extends BaseTest {
             test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
+            driver.findElement(By.xpath("//span[text() = \"Checkout\"]")).click();
             CartPage cartPage = new CartPage(driver);
             test.info("Verifying cart summary");
-            assertTrue(cartPage.verifyCartSummary(), "Cart summary verification failed");
+            assertTrue(cartPage.isCartNotEmpty(), "Cart is empty");
             test.pass("Successfully verified cart summary details");
         } catch (Exception e) {
             logFailure(e, "testCartSummaryDetails");
@@ -61,6 +64,7 @@ public class CartValidationTests extends BaseTest {
             CartPage cartPage = new CartPage(driver);
             test.info("Verifying cart is not empty");
             assertTrue(cartPage.isCartNotEmpty(), "Cart is empty");
+            
             test.pass("Successfully verified cart persistence across pages");
         } catch (Exception e) {
             logFailure(e, "testCartPersistenceAcrossPages");

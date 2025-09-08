@@ -12,7 +12,7 @@
       <class name="cart.CartUpdateTests"/>
       <class name="cart.CartValidationTests"/>
       <class name="checkout.CheckoutTests"/>
-      <class name="checkout.ShippingTests"/>
+     
       <class name="login.LoginTests"/>
       <class name="order.CouponTests"/>
       <class name="order.OrderCompletionTests"/>

@@ -43,7 +43,7 @@ public class LoginTests extends BaseTest {
             test.info("Attempting to log in with invalid credentials");
             Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
             LoginPage loginPage = new LoginPage(driver);
-            assertFalse(loginPage.invalidLogin(data), "Invalid login was successful");
+            assertTrue(loginPage.invalidLogin(data), "Invalid login was successful");
             test.pass("Successfully failed to log in with invalid credentials");
 
         } catch (Exception e) {

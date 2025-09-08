@@ -69,8 +69,5 @@ public class SortAndViewTests extends BaseTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("product/product"));
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+   
 }

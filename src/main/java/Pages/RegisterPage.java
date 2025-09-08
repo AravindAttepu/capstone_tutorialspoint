@@ -62,7 +62,7 @@ public class RegisterPage {
             lastname.sendKeys(data.get("lastname"));
             String mail = "test" + System.currentTimeMillis() + "@example.com";
             email.sendKeys(mail);
-            data.put("mail", mail);
+           
             telephone.sendKeys(data.get("telephone"));
             password.sendKeys(data.get("password"));
             confirmPassword.sendKeys(data.get("password"));

@@ -8,6 +8,8 @@ import Pages.ProductPage;
 import Pages.ProductsPage;
 import Utilities.ReportManager;
 import Utilities.WaitUtil;
+
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class CartUpdateTests extends BaseTest {
             test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
+            driver.findElement(By.xpath("//span[text() = \"Checkout\"]")).click();
             CartPage cartPage = new CartPage(driver);
             test.info("Updating cart quantity");
             assertTrue(cartPage.updateQuantity(2), "Update quantity failed");
@@ -53,6 +56,7 @@ public class CartUpdateTests extends BaseTest {
             test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
+            driver.findElement(By.xpath("//span[text() = \"Checkout\"]")).click();
             CartPage cartPage = new CartPage(driver);
             test.info("Updating with invalid quantity");
             assertTrue(cartPage.updateQuantity(0), "Invalid quantity test failed");
@@ -76,6 +80,7 @@ public class CartUpdateTests extends BaseTest {
             test.info("Adding product to the cart");
             ProductPage productPage = new ProductPage(driver);
             productPage.addToCart();
+            driver.findElement(By.xpath("//span[text() = \"Checkout\"]")).click();
             CartPage cartPage = new CartPage(driver);
             test.info("Removing product from cart");
             assertTrue(cartPage.removeProduct(), "Remove product failed");

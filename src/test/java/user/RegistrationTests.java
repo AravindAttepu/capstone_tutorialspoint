@@ -46,8 +46,8 @@ public class RegistrationTests extends BaseTest {
        	 test = ReportManager.createTest("Register with duplicate User", "Fill the details of user to register");
     		test.info("registration initiated");
        	Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
-        String uniqueEmail = "testuser" + System.currentTimeMillis() + "@example.com";
-        data.put("email", uniqueEmail);
+       // String uniqueEmail = "testuser" + System.currentTimeMillis() + "@example.com";
+        data.put("mail", data.get("mai;"));
 
        	test.info("data read form excel file");
        	RegisterPage page = new RegisterPage(driver);

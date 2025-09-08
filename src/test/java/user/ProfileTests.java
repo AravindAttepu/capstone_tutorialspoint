@@ -28,7 +28,7 @@ public class ProfileTests extends BaseTest {
     	    HomePage homePage = new HomePage(driver);
     	if(!homePage.isLoggedIn())
     	{
-    		homePage.clickOnLogin();
+    		driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
     		test.info("login  page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/UserDetails.xlsx");
 			test.info("data loaded");
@@ -61,7 +61,7 @@ public class ProfileTests extends BaseTest {
     	HomePage homePage = new HomePage(driver);
     	if(!homePage.isLoggedIn())
     	{
-    		homePage.clickOnLogin();
+    		driver.get("https://tutorialsninja.com/demo/index.php?route=account/login");
     		test.info("login  page opened");
 			Map<String, String> data = ScannerUtil.readExcelToMap("src/main/resources/Userdetails.xlsx");
 			test.info("data loaded");

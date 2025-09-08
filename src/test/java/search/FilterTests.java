@@ -50,8 +50,5 @@ public class FilterTests extends BaseTest {
         Assert.assertTrue(productsPage.isNoProductMessageDisplayed(), "No product message is not displayed for a price range with no results");
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+   
 }
